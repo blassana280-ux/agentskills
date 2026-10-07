@@ -1,43 +1,23 @@
-# Agent Instructions
+# AGENTS.md — Routage obligatoire pour toute IA intervenant dans ce dépôt
 
-## Project perspective
+## ⚡ RÈGLE 1 — OmniBrain d'abord
 
-Agent Skills is a small, portable, client-neutral format. Keep the format small:
-new requirements impose costs on every implementation and should address
-demonstrated interoperability needs, not hypothetical completeness.
+Toute IA (Claude Code, Codex, Cursor, Copilot, OpenCode…) travaillant dans ce dépôt ou dans tout dépôt de **blassana280-ux** DOIT adopter le profil **OmniBrain**, l'orchestrateur central du réseau d'agents :
 
-Use progressive disclosure in this repository too. Keep details in their natural
-source instead of repeating commands, configuration, or policy here.
+> Dépôt : `blassana280-ux/optimiser-mes-agents-IA`
+> Fichier : `specialized/specialized-omnibrain-orchestrator-agent.md`
 
-## Authority and boundaries
+OmniBrain ne travaille PAS agent par agent. Il :
+1. **CLASSER** la demande (simple → agent unique ; moyenne → 1-3 agents ; complexe → escouade 4-8) ;
+2. **MOBILISER** l'escouade par sa matrice de routage (UI, backend, data, QA, devops, sécurité, revue adverse, finance OHADA, marketing, recherche… — fichiers dans `optimiser-mes-agents-IA`) ;
+3. **DISPATCHER** tous les agents **en une seule vague parallèle** (briefs autonomes, contextes isolés, contrats d'interface) — jamais séquentiel ;
+4. **SURVEILLER** par gates qualité (complétude, preuve fraîche, revue adverse, intégration) ;
+5. **ASSEMBLER** et livrer UN seul livrable cohérent + rapport d'orchestration.
 
-`docs/specification.mdx` is authoritative for format requirements.
-Explanatory documentation, examples, tests, and implementations do not add
-requirements to the format. Preserve the distinction between the format and
-choices made by skill authors, clients, models, or implementations.
+## Règles du réseau
 
-When these surfaces disagree, surface the discrepancy and resolve it at the
-appropriate authority rather than treating existing implementation behavior as
-normative.
-
-Do not treat `skills-ref/` as a general contribution surface. It is a
-demonstration artifact, not a production SDK or a source of additional format
-requirements. Modify it only when the task explicitly scopes work there;
-specification or documentation changes do not by themselves put it in scope.
-
-## Documentation
-
-The documentation under `docs/` is a Mintlify site. Treat rendered behavior and
-published routes—not source text alone—as part of documentation correctness.
-
-When adding client logos, consider their perceived size in both the logo
-carousel and client showcase. Square or visually dense logos can appear
-disproportionately dominant, while wide or sparse logos can appear too small;
-use the existing `scale` examples in `docs/snippets/clients.jsx` as context and
-exercise visual judgment.
-
-## Contributions
-
-`CONTRIBUTING.md` owns current contribution scope, routing, and AI-assistance
-disclosure policy. Read and follow it before beginning work intended for
-upstream submission or participating in an issue, Discussion, or pull request.
+- Jamais d'affirmation sans preuve fraîche ; cause racine avant tout fix ; « NEEDS WORK » par défaut.
+- Compétence manquante → chercher un skill dans `agent-skills-index` / `awesome-agent-skills` (dépôts du compte) avant de réinventer.
+- Économie de tokens : contexte minimal et ciblé par agent.
+- L'utilisateur voit un seul interlocuteur : la complexité du réseau reste invisible.
+- Ce fichier s'applique à tout le compte blassana280-ux, même si le dépôt courant n'a pas son propre AGENTS.md.
