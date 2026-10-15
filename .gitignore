@@ -5,5 +5,7 @@
 .idea/
 .vscode/
 
-# Dependencies
+# Dependencies & Build
 node_modules/
+dist/
+coverage/
