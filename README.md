@@ -57,3 +57,21 @@ The Agent Skills format was originally developed by [Anthropic](https://www.anth
 ## License
 
 Code in this repository is licensed under [Apache 2.0](LICENSE). Documentation is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). See individual directories for details.
+
+## Nexus AI Hub
+
+This repository also contains a client-only, local-first multi-provider AI workspace. The React application lives in `src/` and runs without an application backend; provider calls are made directly from the browser.
+
+```bash
+npm install
+npm run dev
+```
+
+Open the local Vite URL, add API keys in **Vault**, then use **Chat**, **Agent**, **Council**, **Coûts**, or **Prompts**. API keys and the optional GitHub PAT are stored in this browser's `localStorage`. The Vault can produce an AES-GCM encrypted export. Do not use localStorage as a shared-device secret store.
+
+```bash
+npm test
+npm run build
+```
+
+The app uses real streaming provider APIs. Configure keys before sending; no sample AI answers are generated. See the on-screen Vault security notes for the prototype's localStorage limitations.
