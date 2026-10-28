@@ -31,10 +31,14 @@ python3 -m omnibrain list                           # agents enregistrés
 python3 -m omnibrain classify "refonte complète de l'API et des tests"
 python3 -m omnibrain route "audit sécurité OWASP de l'API"
 python3 -m omnibrain plan examples/task-complex.md -o plan.md
-omnibrain gates livrable.md                         # ou python3 -m omnibrain gates
+python3 -m omnibrain gates livrable.md
+
+# Depuis n'importe quel répertoire, sans installation :
+./bin/omnibrain validate
 ```
 
-Installation optionnelle en commande isolée : `pip install -e .` (fournit la commande `omnibrain`).
+Installation optionnelle en commande globale : `pip install -e .` (fournit la commande `omnibrain`).
+Pour localiser le dépôt hors de son arborescence : variable `OMNIBRAIN_HOME`.
 
 ## Les 5 temps d'OmniBrain
 
@@ -108,6 +112,8 @@ Cursor, Gemini CLI, etc.).
 OmniBrain réutilise sans réinventer : pour une compétence absente, chercher
 d'abord dans les collections forkées `agent-skills-index`,
 `awesome-agent-skills`, `antigravity-skills`, puis étendre la matrice.
+La carte complète des 40 forks du compte et leur cas d'usage :
+[`docs/reseau-depots.md`](docs/reseau-depots.md).
 
 ## Tests et CI
 
