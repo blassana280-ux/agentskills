@@ -188,7 +188,7 @@ SPECS = [
     AgentSpec(
         id="golang-services", name="Go Services Agent", emoji="🐹", squad=SQUAD,
         domains=("backend", "systems"),
-        keywords=("golang", "go", "grpc", "goroutine", "microservice go", "docker", "kubernetes client"),
+        keywords=("golang", "langage go", "grpc", "goroutine", "microservice go", "docker", "kubernetes client"),
         artifacts=("go-service", "grpc-contract"),
         description="Services backend en Go : API gRPC/REST, concurrence par goroutines, binaires statiques, observabilité native et intégration Kubernetes.",
         vibe="La simplicité de Go est une fonctionnalité ; une goroutine qui fuit annule tous ses avantages.",

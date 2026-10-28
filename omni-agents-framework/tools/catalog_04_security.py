@@ -168,7 +168,7 @@ SPECS = [
     AgentSpec(
         id="grc-compliance", name="GRC & Compliance Agent", emoji="📐", squad=SQUAD, risk=True,
         domains=("security", "compliance"),
-        keywords=("grc", "conformité", "iso 27001", "soc 2", "rgpd", "audit", "politique de sécurité", "contrôle", "gouvernance risque"),
+        keywords=("grc", "conformité", "iso 27001", "soc 2", "rgpd", "audit de conformité", "audit iso", "politique de sécurité", "gouvernance risque", "certification sécurité"),
         artifacts=("control-framework", "risk-register"),
         description="Gouvernance, risque et conformité : ISO 27001, SOC 2, RGPD, cartographie des risques, politiques, contrôles et préparation d'audits avec preuves.",
         vibe="Une politique de sécurité que personne n'applique est un document décoratif ; la conformité se prouve par des preuves, pas par des PDF.",

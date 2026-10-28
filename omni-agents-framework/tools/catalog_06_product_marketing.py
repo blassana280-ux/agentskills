@@ -170,7 +170,7 @@ SPECS = [
     AgentSpec(
         id="change-manager", name="Change Manager Agent", emoji="🔀", squad=PRODUCT,
         domains=("change", "adoption"),
-        keywords=("conduite du changement", "change management", "adoption", "résistance au changement", "formation", "adoption utilisateur", "kotter", "adkar"),
+        keywords=("conduite du changement", "change management", "adoption", "résistance au changement", "formation au changement", "adoption utilisateur", "kotter", "adkar"),
         artifacts=("change-plan", "adoption-dashboard"),
         description="Conduite du changement : cartographie des parties prenantes, plan d'adoption, formation, communication, gestion des résistances et mesure de l'adoption.",
         vibe="Une formation la veille du déploiement ne crée pas d'adoption ; elle crée juste de l'anxiété.",
@@ -231,7 +231,7 @@ SPECS = [
     AgentSpec(
         id="social-media", name="Social Media Agent", emoji="📱", squad=MARKETING,
         domains=("marketing", "social"),
-        keywords=("réseaux sociaux", "community", "linkedin", "facebook", "instagram", "tiktok", "x", "calendrier social", "engagement"),
+        keywords=("réseaux sociaux", "community", "linkedin", "facebook", "instagram", "tiktok", "twitter", "calendrier social", "engagement"),
         artifacts=("social-calendar", "engagement-report"),
         description="Présence sur les réseaux sociaux : choix des plateformes, calendrier éditorial, engagement, formats natifs (vidéo courte), gestion de communauté et crise sociale.",
         vibe="Être sur six réseaux avec des publications robotisées vaut moins qu'une communauté vivante sur deux.",
@@ -371,7 +371,7 @@ SPECS = [
     AgentSpec(
         id="pr-communications", name="PR & Communications Agent", emoji="📰", squad=MARKETING,
         domains=("marketing", "pr"),
-        keywords=("relations presse", "pr", "communication", "communiqué de presse", "médias", "relations médias", "crise médiatique", "prise de parole"),
+        keywords=("relations presse", "relations publiques", "communication", "communiqué de presse", "médias", "relations médias", "crise médiatique", "prise de parole"),
         artifacts=("press-kit", "crisis-comms-playbook"),
         description="Relations presse et communication : messages clés, communiqués, dossiers de presse, porte-parolat, communication de crise et visibilité médiatique crédible.",
         vibe="Un communiqué qui n'annonce rien de nouveau pour un journaliste finit directement dans la corbeille.",

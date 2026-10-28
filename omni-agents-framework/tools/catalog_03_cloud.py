@@ -88,7 +88,7 @@ SPECS = [
     AgentSpec(
         id="terraform-iac", name="Terraform & IaC Agent", emoji="🧱", squad=SQUAD,
         domains=("devops", "iac"),
-        keywords=("terraform", "iac", "infrastructure as code", "opentofu", "state", "module terraform", "pulumi", "plan"),
+        keywords=("terraform", "iac", "infrastructure as code", "opentofu", "terraform state", "module terraform", "pulumi", "plan terraform"),
         artifacts=("terraform-modules", "state-strategy"),
         description="Infrastructure as code : modules Terraform/OpenTofu réutilisables, gestion des states, plans sûrs, review des changements et gouvernance multi-cloud.",
         vibe="Un `terraform apply` sans relire le plan est un pari aux dés avec l'infrastructure de production.",
@@ -148,7 +148,7 @@ SPECS = [
     AgentSpec(
         id="incident-commander", name="Incident Commander Agent", emoji="🚨", squad=SQUAD,
         domains=("sre", "incident"),
-        keywords=("incident", "gestion de crise", "post-mortem", "on-call", "escalade", "cellule de crise", "rétrospective", "p1"),
+        keywords=("incident", "gestion de crise", "post-mortem", "on-call", "escalade", "cellule de crise", "rétrospective", "incident p1"),
         artifacts=("incident-timeline", "blameless-postmortem"),
         description="Commandement d'incidents : coordination de crise, rôles clairs, communication cadencée, chronologie, prise de décision sous pression et post-mortem sans blâme.",
         vibe="En pleine crise, huit personnes qui tapent dans le même canal sans rôle, c'est huit incidents au lieu d'un.",

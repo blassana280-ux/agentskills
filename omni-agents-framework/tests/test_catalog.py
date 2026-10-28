@@ -103,6 +103,35 @@ class CatalogTests(unittest.TestCase):
         text = toml_path.read_text(encoding="utf-8")
         self.assertEqual(text.count("[[agents]]"), EXPECTED_CATALOG)
 
+    def test_keyword_hygiene_no_generic_short_tokens(self):
+        """Un mot-clé mono-mot d'au moins 3 caractères évite les faux positifs
+        (« plan », « audit », « go », « bi »...). Les expressions multi-mots
+        restent libres puisque leur contexte est explicite."""
+        for agent in self.catalog_agents:
+            for keyword in agent.keywords:
+                # Les noms technologiques contenant #, +, & ou . (C#, FP&A, .NET)
+                # sont légitimes même courts ; seuls les mots alpha courts sont bannis.
+                if " " not in keyword and keyword.isalpha() and len(keyword) < 3:
+                    self.fail(f"{agent.id}: mot-clé trop générique/court {keyword!r}")
+
+    def test_no_cross_domain_false_positives(self):
+        router = Router(self.registry, Classifier(self.matrix))
+        # « audit d'accessibilité » ne doit pas réveiller la finance ni la sécurité.
+        scores = router._score_agents(_normalize(
+            "Tests de charge k6, automatisation Playwright et audit d'accessibilité WCAG"))
+        for must_stay_zero in ("grc-compliance", "external-auditor", "terraform-iac"):
+            self.assertEqual(scores.get(must_stay_zero, 0), 0,
+                             msg=f"faux positif {must_stay_zero} sur une requête accessibilité")
+        # « plan fiscal » ne doit pas réveiller Terraform.
+        fiscal = router._score_agents(_normalize("Établir le plan fiscal et la liasse OHADA"))
+        self.assertEqual(fiscal.get("terraform-iac", 0), 0)
+        # Mais les vrais signaux fonctionnent toujours.
+        self.assertGreater(scores["accessibility-testing"], 0)
+        self.assertGreater(fiscal["ohada-finance"], 0)
+        # Et une vraie demande fiscale réveille bien le planificateur fiscal.
+        tax = router._score_agents(_normalize("Optimisation fiscale et prix de transfert du groupe"))
+        self.assertGreater(tax["tax-planner"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

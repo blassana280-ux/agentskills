@@ -8,7 +8,7 @@ SPECS = [
     AgentSpec(
         id="ml-engineer", name="ML Engineer Agent", emoji="🤖", squad=SQUAD,
         domains=("ai", "ml"),
-        keywords=("machine learning", "ml", "modèle prédictif", "scikit", "xgboost", "feature engineering", "entraînement", "inférence"),
+        keywords=("machine learning", "modèle prédictif", "scikit", "xgboost", "feature engineering", "entraînement de modèle", "inférence ml"),
         artifacts=("model-package", "training-pipeline"),
         description="Modèles de machine learning classiques : feature engineering, entraînement, validation, mise en production et surveillance de la performance prédictive.",
         vibe="Un modèle sans jeu de validation et sans baseline n'est pas un modèle ; c'est une moyenne déguisée.",
@@ -108,7 +108,7 @@ SPECS = [
     AgentSpec(
         id="time-series-forecaster", name="Time Series Forecaster Agent", emoji="📈", squad=SQUAD,
         domains=("ai", "forecasting"),
-        keywords=("série temporelle", "prévision", "forecast", "saisonnalité", "stock", "demande", "prophet", "arima"),
+        keywords=("série temporelle", "prévision", "forecast", "saisonnalité", "gestion de stock", "prévision de la demande", "prophet", "arima"),
         artifacts=("forecast-model", "uncertainty-bands"),
         description="Prévision de séries temporelles : demande, stocks, énergie, finance ; saisonnalité, régimes, incertitude quantifiée et backtesting temporel.",
         vibe="Une prévision sans intervalle de confiance est un chiffre qui ment par précision apparente.",
@@ -208,7 +208,7 @@ SPECS = [
     AgentSpec(
         id="bi-analyst", name="BI Analyst Agent", emoji="📊", squad=SQUAD,
         domains=("data", "bi"),
-        keywords=("bi", "business intelligence", "tableau de bord", "power bi", "looker", "metabase", "indicateur", "kpi", "reporting"),
+        keywords=("business intelligence", "outils bi", "tableau de bord", "power bi", "looker", "metabase", "indicateur", "kpi", "reporting"),
         artifacts=("dashboard", "kpi-definition-sheet"),
         description="Business intelligence : définition des KPI, modélisation en étoile, tableaux de bord décisionnels, fiabilité des chiffres et appropriation par les équipes.",
         vibe="Deux tableaux de bord qui donnent deux chiffres différents pour le même KPI sont un accident de gouvernance, pas un mystère.",

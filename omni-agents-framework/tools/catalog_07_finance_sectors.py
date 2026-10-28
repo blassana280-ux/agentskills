@@ -50,7 +50,7 @@ SPECS = [
     AgentSpec(
         id="external-auditor", name="External Auditor Agent", emoji="🧑‍⚖️", squad=FINANCE, risk=True,
         domains=("finance", "audit"),
-        keywords=("audit", "auditeur externe", "audit légal", "contrôle des comptes", "matérialité", "sondages", "opinion d'audit", "anomalies"),
+        keywords=("audit légal", "audit externe", "auditeur externe", "audit des comptes", "contrôle des comptes", "matérialité", "sondages d'audit", "opinion d'audit", "anomalies comptables", "due diligence comptable"),
         artifacts=("audit-program", "management-letter"),
         description="Audit légal et contractuel des comptes : approche par les risques, contrôles, sondages, matérialité, opinion d'audit et lettre d'affaires.",
         vibe="L'indépendance de l'auditeur ne se négocie pas ; une opinion achetée vaut moins que pas d'audit du tout.",
@@ -170,7 +170,7 @@ SPECS = [
     AgentSpec(
         id="contract-lawyer", name="Contract Lawyer Agent", emoji="📜", squad=FINANCE,
         domains=("legal", "contracts"),
-        keywords=("contrat", "rédaction contractuelle", "cgv", "nda", "prestation", "bail", "clause", "négociation", "responsabilité"),
+        keywords=("droit des contrats", "rédaction contractuelle", "cgv", "nda", "prestation de service", "bail commercial", "clause contractuelle", "négociation contractuelle", "responsabilité contractuelle"),
         artifacts=("contract-review", "clause-library"),
         description="Négociation et rédaction de contrats : prestation, distribution, NDA, conditions générales, baux, revue des risques et bibliothèques de clauses.",
         vibe="Une clause de responsabilité illimitée ne se découvre pas le jour du litige ; elle se lit avant la signature.",
