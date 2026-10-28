@@ -40,6 +40,24 @@ python3 -m omnibrain gates livrable.md
 Installation optionnelle en commande globale : `pip install -e .` (fournit la commande `omnibrain`).
 Pour localiser le dépôt hors de son arborescence : variable `OMNIBRAIN_HOME`.
 
+## Exécution parallèle de plusieurs demandes
+
+`omnibrain/parallel.py` lance plusieurs plans dans des **processus indépendants**
+(`ProcessPoolExecutor`), chacun produisant sa vague de briefs sans séquençage :
+
+```bash
+python3 scripts/demo-parallele.py                # workers = nombre de CPU
+python3 scripts/demo-parallele.py --workers 5    # un processus par demande
+```
+
+Résultat mesuré sur les 5 demandes d'`examples/` : **12/12 agents mobilisés,
+27 briefs émis en wave 0, 7 types de contrats activés**. La démo affiche le
+temps parallèle vs séquentiel et l'accélération. Note honnête : le routage
+est microsécond, donc sur des micro-tâches le spawn de processus peut coûter
+plus cher que le gain (x0.83 avec 5 workers sur 2 CPU) ; l'auto-calibration
+par défaut reste devant (x1.44), et le gain devient décisif quand les agents
+exécutent de vrais travaux (outils, E/S, génération).
+
 ## Les 5 temps d'OmniBrain
 
 1. **CLASSER** — `simple` (1 agent), `moyenne` (1-3), `complexe` (escouade 4-8).
