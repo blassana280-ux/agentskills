@@ -39,7 +39,9 @@ OmniBrain ne travaille PAS agent par agent. Il :
 - Économie de tokens : contexte minimal et ciblé par agent.
 - L'utilisateur voit un seul interlocuteur : la complexité du réseau reste
   invisible.
-- Toute modification du réseau doit passer `omnibrain validate` et la suite
-  de tests (`python3 -m unittest discover -s tests`, 32 tests).
+- Le réseau compte 112 agents en 10 escouades (12 cœur + 100 catalogue) :
+  toute modification passe `omnibrain validate`, la génération
+  (`python3 tools/generate_agents.py`) et la suite de tests
+  (`python3 -m unittest discover -s tests`).
 - Ce fichier s'applique à tout le compte blassana280-ux, même si le dépôt
   courant n'a pas son propre AGENTS.md.

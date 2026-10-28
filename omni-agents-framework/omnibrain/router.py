@@ -47,9 +47,11 @@ class Router:
         # ---- Renforts obligatoires selon le contexte ----------------------
         # Une demande simple reste mono-agent : les renforts ne s'appliquent
         # qu'aux niveaux moyenne/complexe, conformément au manifeste.
+        mandatory: list[str] = []
+
         def ensure(agent_id: str, why: str) -> None:
-            if agent_id not in selected_ids:
-                selected_ids.append(agent_id)
+            if agent_id not in selected_ids and agent_id not in mandatory:
+                mandatory.append(agent_id)
                 reasons.append(why)
 
         if classification.level != "simple":
@@ -67,8 +69,21 @@ class Router:
                 if "finance-ohada" in domains:
                     ensure("ohada-finance", "domaine OHADA à risque : expert dédié")
 
-        # Plafond dur de l'escouade (hors orchestrateur).
-        selected_ids = selected_ids[: self.classifier.max_squad]
+        # Les renforts obligatoires ne peuvent pas être évincés par le plafond :
+        # on ajoute d'abord les obligatoires, puis on libère de la place en
+        # retirant les candidats les moins bien scorés et non obligatoires.
+        selected_ids.extend(mandatory)
+        score_of = dict(ranked)
+        while len(selected_ids) > self.classifier.max_squad:
+            evictable = [
+                agent_id for agent_id in selected_ids
+                if agent_id not in mandatory and agent_id in score_of
+            ]
+            if not evictable:
+                break  # que des obligatoires : on garde le tout, même au-delà du plafond
+            victim = min(evictable, key=lambda agent_id: (score_of[agent_id], agent_id))
+            selected_ids.remove(victim)
+            reasons.append(f"plafond d'escouade atteint : {victim} non retenu (score faible)")
 
         agents = [self.registry.by_id(agent_id) for agent_id in selected_ids]
         scores = {agent.id: raw_scores.get(agent.id, 0) for agent in agents}

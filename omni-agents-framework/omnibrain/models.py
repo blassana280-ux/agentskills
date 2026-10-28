@@ -41,6 +41,7 @@ class AgentDef:
     risk: bool = False
     description: str = ""
     body: str = ""
+    squad: str = "core"
 
     def as_dict(self) -> dict[str, Any]:
         return {k: v for k, v in asdict(self).items() if k != "body"}

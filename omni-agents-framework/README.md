@@ -17,8 +17,8 @@ testable** :
 
 | Avant | Après |
 |---|---|
-| Un fichier `AGENTS.md` pointeur vers des chemins indisponibles | 12 fiches agents versionnées, validées en CI |
-| Routage implicite, non reproductible | Matrice déclarative `matrix.toml` + moteur déterministe |
+| Un fichier `AGENTS.md` pointeur vers des chemins indisponibles | **112 fiches agents** (12 cœur + 100 catalogue) en 10 escouades, validées en CI |
+| Routage implicite, non reproductible | Matrice déclarative `matrix.toml` + catalogue TOML généré, moteur déterministe |
 | Parallélisation prescrite, jamais outillée | `omnibrain plan` génère briefs et contrats en une vague |
 | « NEEDS WORK » par défaut, sans contrôle | `omnibrain gates` évalue les 4 gates avec code de retour CI |
 
@@ -26,8 +26,9 @@ testable** :
 
 ```bash
 # Aucune dépendance à installer (Python 3.11+)
-python3 -m omnibrain validate                       # valide tout le réseau
-python3 -m omnibrain list                           # agents enregistrés
+python3 -m omnibrain validate                       # valide tout le réseau (112 agents)
+python3 -m omnibrain squads                         # bilan par escouade
+python3 -m omnibrain list --squad security --terse  # filtrer une escouade
 python3 -m omnibrain classify "refonte complète de l'API et des tests"
 python3 -m omnibrain route "audit sécurité OWASP de l'API"
 python3 -m omnibrain plan examples/task-complex.md -o plan.md
@@ -50,13 +51,14 @@ python3 scripts/demo-parallele.py                # workers = nombre de CPU
 python3 scripts/demo-parallele.py --workers 5    # un processus par demande
 ```
 
-Résultat mesuré sur les 5 demandes d'`examples/` : **12/12 agents mobilisés,
-27 briefs émis en wave 0, 7 types de contrats activés**. La démo affiche le
-temps parallèle vs séquentiel et l'accélération. Note honnête : le routage
-est microsécond, donc sur des micro-tâches le spawn de processus peut coûter
-plus cher que le gain (x0.83 avec 5 workers sur 2 CPU) ; l'auto-calibration
-par défaut reste devant (x1.44), et le gain devient décisif quand les agents
-exécutent de vrais travaux (outils, E/S, génération).
+Résultat mesuré sur les 5 demandes d'`examples/` avec le réseau complet :
+**35 briefs émis en wave 0, 19 agents mobilisés par les exemples, les 93
+autres vérifiés routables sur leurs mots-clés, x1.83 d'accélération** sur
+2 CPU. La démo affiche le temps parallèle vs séquentiel et l'accélération.
+Note honnête : le routage est microsécond, donc sur des micro-tâches le
+spawn de processus peut coûter plus cher que le gain quand on force trop de
+workers ; l'auto-calibration par défaut reste devant, et le gain devient
+décisif quand les agents exécutent de vrais travaux (outils, E/S, génération).
 
 ## Les 5 temps d'OmniBrain
 
@@ -84,16 +86,20 @@ exécutent de vrais travaux (outils, E/S, génération).
 ## Structure du dépôt
 
 ```
-├── matrix.toml                  # source de vérité : agents, mots-clés, contrats
-├── omnibrain/                   # moteur (classifier, router, dispatcher, gates, cli)
-├── specialized/                 # 12 fiches agents au format frontmatter Markdown
+├── matrix.toml                  # 12 agents cœur + classification + contrats
+├── catalog/catalog-100.toml     # 100 agents catalogue (GÉNÉRÉ, ne pas éditer)
+├── tools/                       # sources du catalogue : catalog_*.py + generate_agents.py
+├── omnibrain/                   # moteur (classifier, router, dispatcher, gates, parallel, cli)
+├── specialized/                 # 112 fiches agents au format frontmatter Markdown
 ├── skills/omnibrain-orchestration/SKILL.md   # skill compatible spécification Agent Skills
 ├── templates/                   # briefs, contrats d'interface, rapport type
 ├── examples/                    # demandes simple / moyenne / complexe
-└── tests/                       # 32 tests stdlib (python -m unittest)
+└── tests/                       # suite unittest stdlib (python -m unittest)
 ```
 
-## Les 12 agents
+## Les 112 agents en 10 escouades
+
+Les **12 agents cœur** (`matrix.toml`) :
 
 | Agent | Domaine | Risque |
 |---|---|---|
@@ -110,13 +116,37 @@ exécutent de vrais travaux (outils, E/S, génération).
 | 🔎 `research-intel` | veille, sources, preuve fraîche | |
 | 🧭 `product-delivery` | cadrage, roadmap, backlog | |
 
+Les **100 agents catalogue** (`tools/catalog_*.py`, générés dans `specialized/`) :
+
+| Escouade | Effectif | Exemples |
+|---|---:|---|
+| Ingénierie logicielle | 16 | iOS, Android, cross-platform, USSD/SMS, microservices, GraphQL, DBA, Rust, Go, Python, Java, PHP, .NET, legacy, intégrations |
+| Data & IA | 12 | ML, MLOps, NLP, vision, recommandation, séries temporelles, RAG, LLM Ops, prompts, bases vectorielles, BI, dataviz |
+| Cloud & Infrastructure | 10 | AWS, GCP, Azure, Kubernetes, Terraform, réseau, observabilité, commandement d'incident, FinOps, plateforme interne |
+| Sécurité (tous à risque) | 11 | pentest, AppSec, sécurité cloud, DevSecOps, threat intel, DFIR, IAM, cryptographie, GRC, analyse malware, bug bounty |
+| QA & Tests | 5 | automatisation, performance, sécurité, accessibilité, mobile |
+| Design & UX | 8 | recherche UX, product design, design system, UX writing, motion, identité, illustration, accessibilité |
+| Produit & Gestion | 9 | business analyst, PM, Scrum, programme, analytique produit, pricing, success client, sales enablement, conduite du changement |
+| Marketing & Croissance | 10 | SEO, contenu, social, e-mail, paid ads, communauté, influence, stratégie de marque, growth, RP |
+| Finance & Juridique | 12 | comptabilité, fiscalité, audit, paie, contrôle, FP&A, trésorerie, sociétés, contrats, PI, données personnelles, achats |
+| Secteurs ouest-africains | 7 | mobile money/fintech, conformité remise, agritech, solaire, health tech, localisation bambara, edtech |
+
 ## Ajouter un agent
+
+**Agent cœur** (règles de routage centrales) :
 
 1. Créer `specialized/specialized-<id>-agent.md` avec le frontmatter
    (`id`, `name`, `description` obligatoires) en suivant une fiche existante.
 2. Déclarer l'agent dans `matrix.toml` (`[[agents]]`) avec ses mots-clés et artefacts.
 3. Ajouter les `[[contracts]]` éventuels.
-4. Lancer `omnibrain validate` et les tests : la CI fait le reste.
+
+**Agent catalogue** (la voie normale pour les 100+) :
+
+1. Ajouter une `AgentSpec` dans le module `tools/catalog_*.py` de son escouade.
+2. Régénérer : `python3 tools/generate_agents.py` (fiche Markdown + `catalog/catalog-100.toml`).
+3. La CI vérifie que les artefacts générés sont bien à jour (`--check` implicite via `git diff`).
+
+Dans les deux cas : lancer `python3 -m omnibrain validate` et la suite de tests.
 
 ## Compatible Agent Skills
 
@@ -136,11 +166,13 @@ La carte complète des 40 forks du compte et leur cas d'usage :
 ## Tests et CI
 
 ```bash
-python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests -v   # validation, routage, parallélisme, catalogue
+python3 tools/generate_agents.py --check   # intégrité des 100 spécifications
 ```
 
-L'action `.github/workflows/validate.yml` exécute tests et validation sur
-chaque poussée et chaque pull request.
+L'action `.github/workflows/validate.yml` exécute sur chaque poussée et pull
+request : validation du réseau, cohérence des artefacts générés, tests sur
+Python 3.11/3.12/3.13, et la démo d'exécution parallèle.
 
 ## Licence
 

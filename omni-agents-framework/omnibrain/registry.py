@@ -42,6 +42,7 @@ class Registry:
             risk=bool(entry.get("risk", False)),
             description=description,
             body=body,
+            squad=entry.get("squad", "core"),
         )
 
     def agents(self) -> list[AgentDef]:

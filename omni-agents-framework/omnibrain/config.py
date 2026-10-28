@@ -38,7 +38,12 @@ def find_repo_root(start: Path | None = None) -> Path:
 
 
 def load_matrix(root: Path | None = None) -> dict[str, Any]:
-    """Lit et valide la structure minimale de la matrice."""
+    """Lit la matrice principale et fusionne les catalogues ``catalog/*.toml``.
+
+    La matrice ``matrix.toml`` porte les 12 agents cœur, la classification et
+    les contrats. Les catalogues générés (100 agents spécialisés) ajoutent
+    leurs entrées ``[[agents]]`` sans écraser la configuration centrale.
+    """
     root = root or find_repo_root()
     path = root / MATRIX_NAME
     with path.open("rb") as fh:
@@ -47,4 +52,11 @@ def load_matrix(root: Path | None = None) -> dict[str, Any]:
         raise ValueError(f"{path}: la table [[agents]] est obligatoire et doit être une liste")
     if "classification" not in data:
         raise ValueError(f"{path}: la section [classification] est obligatoire")
+
+    catalog_dir = root / "catalog"
+    if catalog_dir.is_dir():
+        for catalog_path in sorted(catalog_dir.glob("*.toml")):
+            with catalog_path.open("rb") as fh:
+                catalog = tomllib.load(fh)
+            data["agents"].extend(catalog.get("agents", []))
     return data

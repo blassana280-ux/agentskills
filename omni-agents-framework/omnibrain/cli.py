@@ -96,15 +96,33 @@ def cmd_plan(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_list(_args: argparse.Namespace) -> int:
+def cmd_list(args: argparse.Namespace) -> int:
     root = find_repo_root()
     registry = Registry(root=root, matrix=load_matrix(root))
     for agent in registry.agents():
+        if args.squad and agent.squad != args.squad:
+            continue
         role = "orchestrateur" if agent.orchestrator else "agent"
         risk = " [RISQUE]" if agent.risk else ""
-        print(f"{agent.emoji} {agent.id:<22} {role:<14} {', '.join(agent.domains)}{risk}")
-        if agent.description:
+        print(f"{agent.emoji} {agent.id:<24} {role:<14} [{agent.squad}] {', '.join(agent.domains)}{risk}")
+        if not args.terse and agent.description:
             print(f"    {agent.description[:110]}")
+    return 0
+
+
+def cmd_squads(_args: argparse.Namespace) -> int:
+    root = find_repo_root()
+    registry = Registry(root=root, matrix=load_matrix(root))
+    summary: dict[str, dict[str, int]] = {}
+    for agent in registry.agents():
+        bucket = summary.setdefault(agent.squad, {"agents": 0, "risk": 0})
+        bucket["agents"] += 1
+        if agent.risk:
+            bucket["risk"] += 1
+    print(f"{'ESCOUADE':<24} {'AGENTS':>7} {'À RISQUE':>9}")
+    for squad in sorted(summary):
+        print(f"{squad:<24} {summary[squad]['agents']:>7} {summary[squad]['risk']:>9}")
+    print(f"{'TOTAL':<24} {len(registry.agents()):>7}")
     return 0
 
 
@@ -163,7 +181,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_plan.set_defaults(func=cmd_plan)
 
     p_list = sub.add_parser("list", help="lister les agents enregistrés")
+    p_list.add_argument("--squad", help="filtrer par escouade")
+    p_list.add_argument("--terse", action="store_true", help="une ligne par agent (sans description)")
     p_list.set_defaults(func=cmd_list)
+
+    p_squads = sub.add_parser("squads", help="afficher le bilan par escouade")
+    p_squads.set_defaults(func=cmd_squads)
 
     p_validate = sub.add_parser("validate", help="valider le réseau (agents, matrice, contrats)")
     p_validate.set_defaults(func=cmd_validate)
@@ -184,6 +207,13 @@ def main(argv: list[str] | None = None) -> int:
         return args.func(args)
     except (FileNotFoundError, KeyError, ValueError) as exc:
         parser.exit(1, f"erreur : {exc}\n")
+    except BrokenPipeError:
+        # Sortie redirigée vers un outil (head, grep...) qui ferme le flux.
+        try:
+            sys.stdout.close()
+        except BrokenPipeError:
+            pass
+        return 0
 
 
 if __name__ == "__main__":

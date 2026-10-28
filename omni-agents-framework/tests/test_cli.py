@@ -21,7 +21,21 @@ class CliSmokeTests(unittest.TestCase):
     def test_validate_exit_zero(self):
         result = self.run_cli("validate")
         self.assertEqual(result.returncode, 0, msg=result.stderr)
-        self.assertIn("12 agents", result.stdout)
+        self.assertIn("112 agents", result.stdout)
+
+    def test_squads_command(self):
+        result = self.run_cli("squads")
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertIn("security", result.stdout)
+        self.assertIn("TOTAL", result.stdout)
+
+    def test_list_squad_filter_and_terse(self):
+        result = self.run_cli("list", "--squad", "security", "--terse")
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        # Les 11 agents de l'escouade sécurité, et aucun d'une autre.
+        self.assertIn("pentester", result.stdout)
+        self.assertNotIn("mobile-ios", result.stdout)
+        self.assertNotIn("Orchestrateur central", result.stdout)
 
     def test_stdin_routing(self):
         result = self.run_cli("route", "-", "--json", input_text="Audit sécurité OWASP de l'API.")

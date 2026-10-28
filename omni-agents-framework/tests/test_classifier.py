@@ -11,7 +11,9 @@ class ClassifierTests(unittest.TestCase):
         cls.classifier = Classifier(load_matrix(ROOT))
 
     def test_simple_task_single_agent(self):
-        result = self.classifier.classify("Améliore le style CSS du formulaire de contact.")
+        # Requête mono-domaine délibérément sans ambiguïté (pas de mot métier
+        # partagé avec une autre compétence, ex. « formulaire » -> UX writer).
+        result = self.classifier.classify("Corrige le style CSS du bouton de validation.")
         self.assertEqual(result.level, "simple")
         self.assertEqual(result.squad_size, 1)
         self.assertIn("ui", result.domains)
