@@ -1,0 +1,1688 @@
+{
+  "team": "trading-agents-team",
+  "version": "1.0.0",
+  "language": "fr",
+  "count": 70,
+  "agents": [
+    {
+      "index": 1,
+      "slug": "amina-cisse",
+      "name": "Amina Cissé",
+      "role": "Chief Trading Officer",
+      "squad": "s1-commandement",
+      "squad_name": "Commandement",
+      "department": "direction",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Stratégique (mensuel à annuel)",
+      "skill": "agents/amina-cisse/SKILL.md",
+      "profile": "agents/amina-cisse/agent.md",
+      "handoffs": [
+        "lucas-moreau",
+        "claire-dubois",
+        "laurent-mercier"
+      ],
+      "kpis": [
+        "100 % des trades proposés rattachables à une limite de mandat écrite.",
+        "Délai d'arbitrage < 24 h ouvrées sur un désaccord d'escouade.",
+        "Zéro décision sans date de revue."
+      ]
+    },
+    {
+      "index": 2,
+      "slug": "ousmane-traore",
+      "name": "Ousmane Traoré",
+      "role": "Orchestrateur d'escouades",
+      "squad": "s1-commandement",
+      "squad_name": "Commandement",
+      "department": "direction",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Cycle de mission (jour à mois)",
+      "skill": "agents/ousmane-traore/SKILL.md",
+      "profile": "agents/ousmane-traore/agent.md",
+      "handoffs": [
+        "amina-cisse",
+        "arjun-mehta",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Ratio de briefs acceptés au premier passage (> 80 %).",
+        "Zéro livrable sans gate de revue adverse.",
+        "Nombre d'agents mobilisés / complexité réelle de la demande (pas de sur-mobilisation)."
+      ]
+    },
+    {
+      "index": 3,
+      "slug": "lucas-moreau",
+      "name": "Lucas Moreau",
+      "role": "Stratège de marché en chef",
+      "squad": "s1-commandement",
+      "squad_name": "Commandement",
+      "department": "direction",
+      "level": "Senior",
+      "markets": "Multi-actifs (actions, taux, devises, matières premières)",
+      "horizon": "Mensuel à trimestriel",
+      "skill": "agents/lucas-moreau/SKILL.md",
+      "profile": "agents/lucas-moreau/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "rafael-santos",
+        "amina-cisse"
+      ],
+      "kpis": [
+        "Chaque thèse porte une invalidation chiffrée.",
+        "Taux de scénarios confirmés à échéance (suivi rétrospectif).",
+        "Zéro thèse sans date de révision."
+      ]
+    },
+    {
+      "index": 4,
+      "slug": "fatou-diallo",
+      "name": "Fatou Diallo",
+      "role": "Cheffe de cabinet (Chief of Staff)",
+      "squad": "s1-commandement",
+      "squad_name": "Commandement",
+      "department": "direction",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/fatou-diallo/SKILL.md",
+      "profile": "agents/fatou-diallo/agent.md",
+      "handoffs": [
+        "amina-cisse",
+        "ousmane-traore",
+        "camille-rousseau"
+      ],
+      "kpis": [
+        "100 % des décisions tracées avec motif.",
+        "Zéro livrable diffusé avec contradiction non signalée.",
+        "Délai de reconstitution d'un historique < 10 minutes."
+      ]
+    },
+    {
+      "index": 5,
+      "slug": "helena-voss",
+      "name": "Helena Voss",
+      "role": "Économiste en chef",
+      "squad": "s2-macro",
+      "squad_name": "Macro & Géopolitique",
+      "department": "recherche",
+      "level": "Lead",
+      "markets": "Macro globale, taux, devises",
+      "horizon": "Mensuel à annuel",
+      "skill": "agents/helena-voss/SKILL.md",
+      "profile": "agents/helena-voss/agent.md",
+      "handoffs": [
+        "ibrahima-keita",
+        "sofia-marchetti",
+        "lucas-moreau"
+      ],
+      "kpis": [
+        "Zéro donnée sans source ni date.",
+        "Pertinence des scénarios à 4 semaines (revue rétrospective).",
+        "Délai de production d'une réaction post-publication < 2 h."
+      ]
+    },
+    {
+      "index": 6,
+      "slug": "ibrahima-keita",
+      "name": "Ibrahima Keïta",
+      "role": "Analyste banques centrales & politique monétaire",
+      "squad": "s2-macro",
+      "squad_name": "Macro & Géopolitique",
+      "department": "recherche",
+      "level": "Senior",
+      "markets": "Taux, devises",
+      "horizon": "Hebdomadaire à trimestriel",
+      "skill": "agents/ibrahima-keita/SKILL.md",
+      "profile": "agents/ibrahima-keita/agent.md",
+      "handoffs": [
+        "daniel-okonkwo",
+        "julia-nowak",
+        "helena-voss"
+      ],
+      "kpis": [
+        "Écart moyen entre trajectoire anticipée et décisions réelles.",
+        "Zéro citation non sourcée.",
+        "Couverture 100 % des réunions majeures du calendrier."
+      ]
+    },
+    {
+      "index": 7,
+      "slug": "sofia-marchetti",
+      "name": "Sofia Marchetti",
+      "role": "Analyste inflation & taux réels",
+      "squad": "s2-macro",
+      "squad_name": "Macro & Géopolitique",
+      "department": "recherche",
+      "level": "Senior",
+      "markets": "Taux, inflation, or",
+      "horizon": "Mensuel à trimestriel",
+      "skill": "agents/sofia-marchetti/SKILL.md",
+      "profile": "agents/sofia-marchetti/agent.md",
+      "handoffs": [
+        "julia-nowak",
+        "victor-almeida",
+        "helena-voss"
+      ],
+      "kpis": [
+        "Erreur moyenne des scénarios d'inflation à 3 mois.",
+        "Exhaustivité de la décomposition (100 % des contributions).",
+        "Zéro calcul de taux réel sans préciser la mesure d'inflation retenue."
+      ]
+    },
+    {
+      "index": 8,
+      "slug": "daniel-okonkwo",
+      "name": "Daniel Okonkwo",
+      "role": "Stratège devises & flux internationaux",
+      "squad": "s2-macro",
+      "squad_name": "Macro & Géopolitique",
+      "department": "recherche",
+      "level": "Senior",
+      "markets": "FX G10 et émergents, XOF",
+      "horizon": "Hebdomadaire à trimestriel",
+      "skill": "agents/daniel-okonkwo/SKILL.md",
+      "profile": "agents/daniel-okonkwo/agent.md",
+      "handoffs": [
+        "salma-bennis",
+        "laurent-mercier",
+        "emmanuel-ngoma"
+      ],
+      "kpis": [
+        "Chaque vue FX rattachée à un moteur explicite.",
+        "Zéro paire recommandée sans évaluation de liquidité.",
+        "Suivi des interventions de banques centrales à jour."
+      ]
+    },
+    {
+      "index": 9,
+      "slug": "mei-lin-zhao",
+      "name": "Mei-Lin Zhao",
+      "role": "Analyste géopolitique & matières premières",
+      "squad": "s2-macro",
+      "squad_name": "Macro & Géopolitique",
+      "department": "recherche",
+      "level": "Spécialiste",
+      "markets": "Énergie, métaux, agriculture",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/mei-lin-zhao/SKILL.md",
+      "profile": "agents/mei-lin-zhao/agent.md",
+      "handoffs": [
+        "victor-almeida",
+        "claire-dubois",
+        "lucas-moreau"
+      ],
+      "kpis": [
+        "Délai entre événement et alerte < 6 h.",
+        "Taux de fausses alertes (revue à 30 jours).",
+        "Chaque alerte comporte une condition de désescalade."
+      ]
+    },
+    {
+      "index": 10,
+      "slug": "rafael-santos",
+      "name": "Rafael Santos",
+      "role": "Analyste technique multi-timeframe",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Intraday à hebdomadaire",
+      "skill": "agents/rafael-santos/SKILL.md",
+      "profile": "agents/rafael-santos/agent.md",
+      "handoffs": [
+        "yuki-tanaka",
+        "chiara-ferrari",
+        "yannick-kouassi"
+      ],
+      "kpis": [
+        "Chaque scénario porte un niveau d'invalidation chiffré.",
+        "Cohérence inter-échelles explicitée.",
+        "Taux de scénarios réalisés (revue hebdomadaire)."
+      ]
+    },
+    {
+      "index": 11,
+      "slug": "yuki-tanaka",
+      "name": "Yuki Tanaka",
+      "role": "Analyste price action & structure de marché",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Actions, indices, crypto",
+      "horizon": "Intraday à journalier",
+      "skill": "agents/yuki-tanaka/SKILL.md",
+      "profile": "agents/yuki-tanaka/agent.md",
+      "handoffs": [
+        "rafael-santos",
+        "kevin-ndoye",
+        "sean-oconnell"
+      ],
+      "kpis": [
+        "Objectivité des swings (critère reproductible).",
+        "Taux de respect des zones marquées.",
+        "Zéro plan sans stop logique."
+      ]
+    },
+    {
+      "index": 12,
+      "slug": "omar-benali",
+      "name": "Omar Benali",
+      "role": "Analyste indicateurs & systèmes de tendance",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Indices, actions, futures",
+      "horizon": "Journalier à hebdomadaire",
+      "skill": "agents/omar-benali/SKILL.md",
+      "profile": "agents/omar-benali/agent.md",
+      "handoffs": [
+        "rafael-santos",
+        "hugo-lefevre",
+        "viktor-volkov"
+      ],
+      "kpis": [
+        "Chaque indicateur recommandé a un test chiffré à l'appui.",
+        "Redondance mesurée (corrélation entre signaux).",
+        "Taux de faux signaux documenté."
+      ]
+    },
+    {
+      "index": 13,
+      "slug": "chiara-ferrari",
+      "name": "Chiara Ferrari",
+      "role": "Analyste volumes, VWAP & microstructure",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "Actions liquides, futures, crypto",
+      "horizon": "Intraday",
+      "skill": "agents/chiara-ferrari/SKILL.md",
+      "profile": "agents/chiara-ferrari/agent.md",
+      "handoffs": [
+        "yannick-kouassi",
+        "theo-martin",
+        "rafael-santos"
+      ],
+      "kpis": [
+        "Qualité des données tick vérifiée à chaque analyse.",
+        "Pertinence des zones de valeur (test rétrospectif).",
+        "Zéro conclusion intraday sur données agrégées grossièrement."
+      ]
+    },
+    {
+      "index": 14,
+      "slug": "kevin-ndoye",
+      "name": "Kevin Ndoye",
+      "role": "Analyste figures chartistes & niveaux clés",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Journalier à hebdomadaire",
+      "skill": "agents/kevin-ndoye/SKILL.md",
+      "profile": "agents/kevin-ndoye/agent.md",
+      "handoffs": [
+        "rafael-santos",
+        "hugo-lefevre",
+        "yuki-tanaka"
+      ],
+      "kpis": [
+        "Chaque figure recommandée a des statistiques historiques.",
+        "Taux de réussite réel vs annoncé.",
+        "Zéro figure identifiée sans critère de validation."
+      ]
+    },
+    {
+      "index": 15,
+      "slug": "anna-kowalski",
+      "name": "Anna Kowalski",
+      "role": "Analyste inter-marchés & corrélations",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Actions, taux, devises, matières premières, crypto",
+      "horizon": "Hebdomadaire à mensuel",
+      "skill": "agents/anna-kowalski/SKILL.md",
+      "profile": "agents/anna-kowalski/agent.md",
+      "handoffs": [
+        "diego-ramirez",
+        "lucie-bernard",
+        "laurent-mercier"
+      ],
+      "kpis": [
+        "Fenêtres de calcul explicitement justifiées.",
+        "Détection des ruptures significatives avant 5 séances.",
+        "Zéro corrélation affirmée sans période de calcul."
+      ]
+    },
+    {
+      "index": 16,
+      "slug": "tomas-herrera",
+      "name": "Tomás Herrera",
+      "role": "Analyste cycles & saisonnalité",
+      "squad": "s3-analyse-technique",
+      "squad_name": "Analyse Technique",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "Actions, matières premières, devises",
+      "horizon": "Mensuel à annuel",
+      "skill": "agents/tomas-herrera/SKILL.md",
+      "profile": "agents/tomas-herrera/agent.md",
+      "handoffs": [
+        "lucas-moreau",
+        "felix-braun",
+        "elena-petrova"
+      ],
+      "kpis": [
+        "Taille d'échantillon et p-value fournies pour chaque effet.",
+        "Zéro effet retenu sur moins de 10 cycles.",
+        "Stabilité vérifiée sur sous-périodes."
+      ]
+    },
+    {
+      "index": 17,
+      "slug": "nadia-haddad",
+      "name": "Nadia Haddad",
+      "role": "Analyste actions fondamental",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Lead",
+      "markets": "Actions US, Europe, marchés frontières",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/nadia-haddad/SKILL.md",
+      "profile": "agents/nadia-haddad/agent.md",
+      "handoffs": [
+        "pierre-lambert",
+        "jonas-berg",
+        "grace-mwangi"
+      ],
+      "kpis": [
+        "Précision des prévisions de résultats (écart vs réalisé).",
+        "Chaque thèse porte une invalidation chiffrée.",
+        "Taux de thèses encore valides à 12 mois."
+      ]
+    },
+    {
+      "index": 18,
+      "slug": "pierre-lambert",
+      "name": "Pierre Lambert",
+      "role": "Analyste valorisation & modèles DCF",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Actions, indices",
+      "horizon": "Pluriannuel",
+      "skill": "agents/pierre-lambert/SKILL.md",
+      "profile": "agents/pierre-lambert/agent.md",
+      "handoffs": [
+        "nadia-haddad",
+        "felix-braun",
+        "erik-lindqvist"
+      ],
+      "kpis": [
+        "100 % des hypothèses citées et justifiées.",
+        "Écart entre prix cible et prix de marché expliqué.",
+        "Sensibilité chiffrée sur les 3 hypothèses clés."
+      ]
+    },
+    {
+      "index": 19,
+      "slug": "grace-mwangi",
+      "name": "Grace Mwangi",
+      "role": "Analyste résultats & événements corporate",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Actions",
+      "horizon": "Événementiel (jours à semaines)",
+      "skill": "agents/grace-mwangi/SKILL.md",
+      "profile": "agents/grace-mwangi/agent.md",
+      "handoffs": [
+        "nadia-haddad",
+        "kwame-mensah",
+        "theo-martin"
+      ],
+      "kpis": [
+        "Couverture 100 % des publications des titres suivis.",
+        "Pertinence des 3 métriques clés identifiées.",
+        "Délai de débrief < 3 h après publication."
+      ]
+    },
+    {
+      "index": 20,
+      "slug": "jonas-berg",
+      "name": "Jonas Berg",
+      "role": "Analyste secteurs & chaînes de valeur",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "Actions sectorielles",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/jonas-berg/SKILL.md",
+      "profile": "agents/jonas-berg/agent.md",
+      "handoffs": [
+        "nadia-haddad",
+        "victor-almeida",
+        "sarah-cohen"
+      ],
+      "kpis": [
+        "Fraîcheur des données sectorielles (< 1 trimestre).",
+        "Pertinence des indicateurs avancés proposés.",
+        "Zéro généralisation sectorielle sans données."
+      ]
+    },
+    {
+      "index": 21,
+      "slug": "leila-mansouri",
+      "name": "Leïla Mansouri",
+      "role": "Analyste crédit & obligations",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Senior",
+      "markets": "Crédit IG/HY, souverain",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/leila-mansouri/SKILL.md",
+      "profile": "agents/leila-mansouri/agent.md",
+      "handoffs": [
+        "julia-nowak",
+        "priya-nair",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Couverture des émetteurs détenus à 100 %.",
+        "Écart spread justifié chiffré.",
+        "Détection des dégradations avant le marché."
+      ]
+    },
+    {
+      "index": 22,
+      "slug": "victor-almeida",
+      "name": "Victor Almeida",
+      "role": "Analyste matières premières & énergie",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "Pétrole, gaz, métaux, agriculture, or",
+      "horizon": "Hebdomadaire à trimestriel",
+      "skill": "agents/victor-almeida/SKILL.md",
+      "profile": "agents/victor-almeida/agent.md",
+      "handoffs": [
+        "amara-thiam",
+        "pavel-novak",
+        "laurent-mercier"
+      ],
+      "kpis": [
+        "Fraîcheur des inventaires (< 1 semaine).",
+        "Cohérence entre vue de prix et structure de courbe.",
+        "Zéro recommandation sans hypothèse de coût de portage."
+      ]
+    },
+    {
+      "index": 23,
+      "slug": "sarah-cohen",
+      "name": "Sarah Cohen",
+      "role": "Analyste ETF & flux passifs",
+      "squad": "s4-recherche-fondamentale",
+      "squad_name": "Recherche Fondamentale",
+      "department": "analyse",
+      "level": "Spécialiste",
+      "markets": "ETF actions, obligataires, thématiques",
+      "horizon": "Hebdomadaire à trimestriel",
+      "skill": "agents/sarah-cohen/SKILL.md",
+      "profile": "agents/sarah-cohen/agent.md",
+      "handoffs": [
+        "kwame-mensah",
+        "emmanuel-ngoma",
+        "laurent-mercier"
+      ],
+      "kpis": [
+        "Comparatif fondé sur données officielles du fonds.",
+        "Coût total (frais + spread + tracking) explicitement calculé.",
+        "Zéro recommandation sans vérification de la liquidité."
+      ]
+    },
+    {
+      "index": 24,
+      "slug": "arjun-mehta",
+      "name": "Arjun Mehta",
+      "role": "Quant research lead",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Recherche (mois) à production",
+      "skill": "agents/arjun-mehta/SKILL.md",
+      "profile": "agents/arjun-mehta/agent.md",
+      "handoffs": [
+        "hugo-lefevre",
+        "elena-petrova",
+        "erik-lindqvist"
+      ],
+      "kpis": [
+        "100 % des modèles validés hors échantillon avant usage.",
+        "Nombre de stratégies survivantes à 12 mois.",
+        "Zéro modèle en production sans surveillance définie."
+      ]
+    },
+    {
+      "index": 25,
+      "slug": "elena-petrova",
+      "name": "Elena Petrova",
+      "role": "Quant statistique & tests d'hypothèses",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Recherche",
+      "skill": "agents/elena-petrova/SKILL.md",
+      "profile": "agents/elena-petrova/agent.md",
+      "handoffs": [
+        "arjun-mehta",
+        "hugo-lefevre",
+        "malik-ndiaye"
+      ],
+      "kpis": [
+        "Nombre de tests déclaré pour chaque conclusion.",
+        "Intervalles de confiance systématiquement fournis.",
+        "Taux de faux positifs détectés a posteriori."
+      ]
+    },
+    {
+      "index": 26,
+      "slug": "hugo-lefevre",
+      "name": "Hugo Lefèvre",
+      "role": "Ingénieur backtest & simulation",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Recherche",
+      "skill": "agents/hugo-lefevre/SKILL.md",
+      "profile": "agents/hugo-lefevre/agent.md",
+      "handoffs": [
+        "arjun-mehta",
+        "theo-martin",
+        "lucie-bernard"
+      ],
+      "kpis": [
+        "Reproductibilité bit à bit des résultats.",
+        "Écart entre performance brute et nette documenté.",
+        "Zéro backtest sans hypothèse de coût."
+      ]
+    },
+    {
+      "index": 27,
+      "slug": "mei-chen",
+      "name": "Mei Chen",
+      "role": "Ingénieur facteurs & alpha",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Senior",
+      "markets": "Actions, futures, crypto",
+      "horizon": "Mensuel à trimestriel",
+      "skill": "agents/mei-chen/SKILL.md",
+      "profile": "agents/mei-chen/agent.md",
+      "handoffs": [
+        "diego-ramirez",
+        "sarah-cohen",
+        "arjun-mehta"
+      ],
+      "kpis": [
+        "Exposition résiduelle aux facteurs indésirables < seuil.",
+        "Corrélation entre facteurs mesurée.",
+        "Suivi de dégradation trimestriel."
+      ]
+    },
+    {
+      "index": 28,
+      "slug": "samuel-adeyemi",
+      "name": "Samuel Adeyemi",
+      "role": "Ingénieur données de marché",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/samuel-adeyemi/SKILL.md",
+      "profile": "agents/samuel-adeyemi/agent.md",
+      "handoffs": [
+        "arjun-mehta",
+        "alessandro-conti",
+        "hugo-lefevre"
+      ],
+      "kpis": [
+        "Taux de complétude des séries critiques.",
+        "Nombre d'anomalies détectées avant impact.",
+        "Traçabilité de chaque transformation."
+      ]
+    },
+    {
+      "index": 29,
+      "slug": "lucie-bernard",
+      "name": "Lucie Bernard",
+      "role": "Quant risque & stress testing",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Quotidien à mensuel",
+      "skill": "agents/lucie-bernard/SKILL.md",
+      "profile": "agents/lucie-bernard/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "diego-ramirez",
+        "karim-belkacem"
+      ],
+      "kpis": [
+        "Fréquence de dépassement de la VaR vs attendu.",
+        "Couverture des scénarios de stress définis.",
+        "Zéro mesure de risque sans hypothèse documentée."
+      ]
+    },
+    {
+      "index": 30,
+      "slug": "diego-ramirez",
+      "name": "Diego Ramírez",
+      "role": "Ingénieur optimisation de portefeuille",
+      "squad": "s5-quant",
+      "squad_name": "Quantitatif & Data",
+      "department": "quant",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Mensuel",
+      "skill": "agents/diego-ramirez/SKILL.md",
+      "profile": "agents/diego-ramirez/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "hawa-diabate",
+        "lucie-bernard"
+      ],
+      "kpis": [
+        "Turnover induit par l'optimisation mesuré.",
+        "Sensibilité aux entrées chiffrée.",
+        "Zéro poids extrême non justifié."
+      ]
+    },
+    {
+      "index": 31,
+      "slug": "nora-el-amrani",
+      "name": "Nora El Amrani",
+      "role": "Lead IA trading",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Recherche & production",
+      "skill": "agents/nora-el-amrani/SKILL.md",
+      "profile": "agents/nora-el-amrani/agent.md",
+      "handoffs": [
+        "thomas-girard",
+        "viktor-volkov",
+        "malik-ndiaye"
+      ],
+      "kpis": [
+        "Part des cas d'usage où une règle simple suffisait (éviter la sur-ingénierie).",
+        "Modèles en production avec surveillance active.",
+        "Gain mesuré vs base de référence."
+      ]
+    },
+    {
+      "index": 32,
+      "slug": "thomas-girard",
+      "name": "Thomas Girard",
+      "role": "Ingénieur ML supervisé",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Senior",
+      "markets": "Actions, futures, crypto",
+      "horizon": "Journalier à hebdomadaire",
+      "skill": "agents/thomas-girard/SKILL.md",
+      "profile": "agents/thomas-girard/agent.md",
+      "handoffs": [
+        "ines-da-silva",
+        "malik-ndiaye",
+        "mei-chen"
+      ],
+      "kpis": [
+        "Écart performance validation/test mesuré.",
+        "Calibration des probabilités vérifiée.",
+        "Zéro variable créée avec information future."
+      ]
+    },
+    {
+      "index": 33,
+      "slug": "aicha-toure",
+      "name": "Aïcha Touré",
+      "role": "Ingénieur NLP & sentiment de marché",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Senior",
+      "markets": "Actions, crypto, macro",
+      "horizon": "Intraday à hebdomadaire",
+      "skill": "agents/aicha-toure/SKILL.md",
+      "profile": "agents/aicha-toure/agent.md",
+      "handoffs": [
+        "nora-el-amrani",
+        "mei-lin-zhao",
+        "grace-mwangi"
+      ],
+      "kpis": [
+        "Précision de classification vérifiée sur échantillon annoté.",
+        "Délai entre publication et indicateur disponible.",
+        "Apport prédictif mesuré, même s'il est nul."
+      ]
+    },
+    {
+      "index": 34,
+      "slug": "viktor-volkov",
+      "name": "Viktor Volkov",
+      "role": "Ingénieur apprentissage par renforcement",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Senior",
+      "markets": "Futures, crypto, FX",
+      "horizon": "Intraday à journalier",
+      "skill": "agents/viktor-volkov/SKILL.md",
+      "profile": "agents/viktor-volkov/agent.md",
+      "handoffs": [
+        "nora-el-amrani",
+        "yannick-kouassi",
+        "malik-ndiaye"
+      ],
+      "kpis": [
+        "Gain vs baseline documenté ou absence de gain assumée.",
+        "Nombre de régimes testés.",
+        "Zéro politique livrée sans test de robustesse."
+      ]
+    },
+    {
+      "index": 35,
+      "slug": "ines-da-silva",
+      "name": "Inès Da Silva",
+      "role": "Ingénieur MLOps & monitoring de modèles",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/ines-da-silva/SKILL.md",
+      "profile": "agents/ines-da-silva/agent.md",
+      "handoffs": [
+        "nora-el-amrani",
+        "brigitte-moreau",
+        "alessandro-conti"
+      ],
+      "kpis": [
+        "Délai de détection d'une dérive < 5 séances.",
+        "100 % des modèles en production versionnés.",
+        "Zéro déploiement sans test de non-régression."
+      ]
+    },
+    {
+      "index": 36,
+      "slug": "malik-ndiaye",
+      "name": "Malik Ndiaye",
+      "role": "Garde-fou IA & évaluation de robustesse",
+      "squad": "s6-ia",
+      "squad_name": "IA & Automatisation",
+      "department": "ia",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/malik-ndiaye/SKILL.md",
+      "profile": "agents/malik-ndiaye/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "erik-lindqvist",
+        "ines-da-silva"
+      ],
+      "kpis": [
+        "Nombre de modèles rejetés ou corrigés avant production.",
+        "Couverture des tests adverses.",
+        "Taux de fragilité détectée a posteriori."
+      ]
+    },
+    {
+      "index": 37,
+      "slug": "claire-dubois",
+      "name": "Claire Dubois",
+      "role": "Directrice des risques",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Quotidien à annuel",
+      "skill": "agents/claire-dubois/SKILL.md",
+      "profile": "agents/claire-dubois/agent.md",
+      "handoffs": [
+        "amina-cisse",
+        "lucie-bernard",
+        "abdoulaye-sow"
+      ],
+      "kpis": [
+        "Délai de détection d'un dépassement de limite.",
+        "Nombre de dépassements non anticipés.",
+        "100 % des modèles validés indépendamment avant usage."
+      ]
+    },
+    {
+      "index": 38,
+      "slug": "karim-belkacem",
+      "name": "Karim Belkacem",
+      "role": "Risk manager marché",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Intraday à hebdomadaire",
+      "skill": "agents/karim-belkacem/SKILL.md",
+      "profile": "agents/karim-belkacem/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "yannick-kouassi",
+        "lucie-bernard"
+      ],
+      "kpis": [
+        "Fréquence de réconciliation positions/expositions.",
+        "Délai de signalement d'une concentration.",
+        "Écart inexpliqué de PnL < seuil."
+      ]
+    },
+    {
+      "index": 39,
+      "slug": "priya-nair",
+      "name": "Priya Nair",
+      "role": "Analyste risque de liquidité & contrepartie",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Senior",
+      "markets": "Multi-actifs, crédit, crypto",
+      "horizon": "Quotidien à mensuel",
+      "skill": "agents/priya-nair/SKILL.md",
+      "profile": "agents/priya-nair/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "isabela-costa",
+        "theo-martin"
+      ],
+      "kpis": [
+        "Délai de sortie estimé pour 100 % des positions.",
+        "Couverture des contreparties par un suivi documenté.",
+        "Zéro position illiquide sans limite explicite."
+      ]
+    },
+    {
+      "index": 40,
+      "slug": "abdoulaye-sow",
+      "name": "Abdoulaye Sow",
+      "role": "Responsable conformité",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/abdoulaye-sow/SKILL.md",
+      "profile": "agents/abdoulaye-sow/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "maria-gonzalez",
+        "clara-jensen"
+      ],
+      "kpis": [
+        "100 % des activités cartographiées.",
+        "Zéro lancement sans revue de conformité.",
+        "Délai de réponse sur une question réglementaire < 48 h."
+      ]
+    },
+    {
+      "index": 41,
+      "slug": "maria-gonzalez",
+      "name": "María González",
+      "role": "Analyste AML/KYC & surveillance",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs, crypto",
+      "horizon": "Continu",
+      "skill": "agents/maria-gonzalez/SKILL.md",
+      "profile": "agents/maria-gonzalez/agent.md",
+      "handoffs": [
+        "abdoulaye-sow",
+        "claire-dubois",
+        "clara-jensen"
+      ],
+      "kpis": [
+        "Taux de faux positifs et de faux négatifs surveillé.",
+        "Délai de traitement d'une alerte.",
+        "Traçabilité complète des décisions."
+      ]
+    },
+    {
+      "index": 42,
+      "slug": "erik-lindqvist",
+      "name": "Erik Lindqvist",
+      "role": "Auditeur de modèles & validation indépendante",
+      "squad": "s7-risque-conformite",
+      "squad_name": "Risque & Conformité",
+      "department": "risque",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/erik-lindqvist/SKILL.md",
+      "profile": "agents/erik-lindqvist/agent.md",
+      "handoffs": [
+        "claire-dubois",
+        "arjun-mehta",
+        "nora-el-amrani"
+      ],
+      "kpis": [
+        "100 % des modèles critiques audités avant usage.",
+        "Écarts documentation/code détectés.",
+        "Délai d'audit respecté."
+      ]
+    },
+    {
+      "index": 43,
+      "slug": "yannick-kouassi",
+      "name": "Yannick Kouassi",
+      "role": "Responsable exécution",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Intraday",
+      "skill": "agents/yannick-kouassi/SKILL.md",
+      "profile": "agents/yannick-kouassi/agent.md",
+      "handoffs": [
+        "benjamin-roche",
+        "theo-martin",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Écart au prix de référence (slippage) mesuré.",
+        "Taux d'exécution dans les limites fixées.",
+        "100 % des ordres documentés et validés."
+      ]
+    },
+    {
+      "index": 44,
+      "slug": "benjamin-roche",
+      "name": "Benjamin Roche",
+      "role": "Spécialiste microstructure d'exécution",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Senior",
+      "markets": "Actions, futures, FX",
+      "horizon": "Intraday",
+      "skill": "agents/benjamin-roche/SKILL.md",
+      "profile": "agents/benjamin-roche/agent.md",
+      "handoffs": [
+        "yannick-kouassi",
+        "theo-martin",
+        "chiara-ferrari"
+      ],
+      "kpis": [
+        "Écart entre coût prévu et coût réalisé.",
+        "Slippage moyen par session.",
+        "Zéro recommandation sans mesure de profondeur."
+      ]
+    },
+    {
+      "index": 45,
+      "slug": "salma-bennis",
+      "name": "Salma Bennis",
+      "role": "Trader FX & produits de change",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Senior",
+      "markets": "FX G10 et émergents, XOF",
+      "horizon": "Intraday à hebdomadaire",
+      "skill": "agents/salma-bennis/SKILL.md",
+      "profile": "agents/salma-bennis/agent.md",
+      "handoffs": [
+        "emmanuel-ngoma",
+        "yannick-kouassi",
+        "priya-nair"
+      ],
+      "kpis": [
+        "Coût de conversion réalisé vs référence.",
+        "Écart de règlement (settlement) évité.",
+        "Zéro opération sur devise non convertible sans mention explicite."
+      ]
+    },
+    {
+      "index": 46,
+      "slug": "kwame-mensah",
+      "name": "Kwame Mensah",
+      "role": "Trader actions & ETF",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Senior",
+      "markets": "Actions, ETF",
+      "horizon": "Journalier à mensuel",
+      "skill": "agents/kwame-mensah/SKILL.md",
+      "profile": "agents/kwame-mensah/agent.md",
+      "handoffs": [
+        "theo-martin",
+        "yannick-kouassi",
+        "sarah-cohen"
+      ],
+      "kpis": [
+        "Slippage moyen vs VWAP.",
+        "Taux d'ordres exécutés dans la fenêtre prévue.",
+        "Zéro ordre sur titre suspendu ou en événement."
+      ]
+    },
+    {
+      "index": 47,
+      "slug": "isabela-costa",
+      "name": "Isabela Costa",
+      "role": "Trader crypto & dérivés numériques",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Senior",
+      "markets": "Crypto spot et perpétuels",
+      "horizon": "Intraday à hebdomadaire",
+      "skill": "agents/isabela-costa/SKILL.md",
+      "profile": "agents/isabela-costa/agent.md",
+      "handoffs": [
+        "yannick-kouassi",
+        "priya-nair",
+        "mohamed-fofana"
+      ],
+      "kpis": [
+        "Coût total (frais + financement + slippage) suivi.",
+        "Concentration par plateforme respectée.",
+        "Zéro exécution sans vérification de retrait."
+      ]
+    },
+    {
+      "index": 48,
+      "slug": "theo-martin",
+      "name": "Théo Martin",
+      "role": "Analyste coûts de transaction & TCA",
+      "squad": "s8-execution",
+      "squad_name": "Exécution & Opérations",
+      "department": "execution",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Hebdomadaire à mensuel",
+      "skill": "agents/theo-martin/SKILL.md",
+      "profile": "agents/theo-martin/agent.md",
+      "handoffs": [
+        "hugo-lefevre",
+        "yannick-kouassi",
+        "benjamin-roche"
+      ],
+      "kpis": [
+        "Couverture des ordres analysés.",
+        "Écart entre coûts modélisés et réalisés.",
+        "Fréquence de mise à jour des hypothèses de coûts."
+      ]
+    },
+    {
+      "index": 49,
+      "slug": "laurent-mercier",
+      "name": "Laurent Mercier",
+      "role": "Gestionnaire de portefeuille",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Mensuel à annuel",
+      "skill": "agents/laurent-mercier/SKILL.md",
+      "profile": "agents/laurent-mercier/agent.md",
+      "handoffs": [
+        "hawa-diabate",
+        "claire-dubois",
+        "yannick-kouassi"
+      ],
+      "kpis": [
+        "Respect des limites de risque (100 %).",
+        "Contribution des 5 premières positions au risque total.",
+        "Taux de positions encore justifiées à la revue suivante."
+      ]
+    },
+    {
+      "index": 50,
+      "slug": "hawa-diabate",
+      "name": "Hawa Diabaté",
+      "role": "Constructeur de portefeuille multi-actifs",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Mensuel à trimestriel",
+      "skill": "agents/hawa-diabate/SKILL.md",
+      "profile": "agents/hawa-diabate/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "diego-ramirez",
+        "anna-kowalski"
+      ],
+      "kpis": [
+        "Diversification mesurée par facteur (pas par ligne).",
+        "Comportement en scénario de stress chiffré.",
+        "Zéro concentration de facteur non signalée."
+      ]
+    },
+    {
+      "index": 51,
+      "slug": "felix-braun",
+      "name": "Felix Braun",
+      "role": "Spécialiste allocation tactique",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/felix-braun/SKILL.md",
+      "profile": "agents/felix-braun/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "tomas-herrera",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Contribution des paris tactiques vs structure.",
+        "Respect de la taille maximale des paris.",
+        "Taux de paris clos dans la durée prévue."
+      ]
+    },
+    {
+      "index": 52,
+      "slug": "rania-khalil",
+      "name": "Rania Khalil",
+      "role": "Analyste performance & attribution",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Mensuel à annuel",
+      "skill": "agents/rania-khalil/SKILL.md",
+      "profile": "agents/rania-khalil/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "claire-dubois",
+        "fatou-diallo"
+      ],
+      "kpis": [
+        "Délai de production du rapport mensuel.",
+        "Cohérence des sommes d'attribution avec la performance totale.",
+        "Zéro rapport sans comparaison à une référence."
+      ]
+    },
+    {
+      "index": 53,
+      "slug": "emmanuel-ngoma",
+      "name": "Emmanuel Ngoma",
+      "role": "Gestionnaire de trésorerie",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Senior",
+      "markets": "Cash, monétaire, FX",
+      "horizon": "Quotidien à mensuel",
+      "skill": "agents/emmanuel-ngoma/SKILL.md",
+      "profile": "agents/emmanuel-ngoma/agent.md",
+      "handoffs": [
+        "salma-bennis",
+        "claire-dubois",
+        "yannick-kouassi"
+      ],
+      "kpis": [
+        "Zéro incident de règlement.",
+        "Coût de conversion moyen.",
+        "Rendement du cash excédentaire vs référence monétaire."
+      ]
+    },
+    {
+      "index": 54,
+      "slug": "julia-nowak",
+      "name": "Julia Nowak",
+      "role": "Gestionnaire de portefeuille revenu fixe",
+      "squad": "s9-portefeuille",
+      "squad_name": "Portefeuille & Allocation",
+      "department": "portefeuille",
+      "level": "Senior",
+      "markets": "Taux, crédit, souverain",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/julia-nowak/SKILL.md",
+      "profile": "agents/julia-nowak/agent.md",
+      "handoffs": [
+        "laurent-mercier",
+        "leila-mansouri",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Duration réalisée vs cible.",
+        "Écart de performance vs indice obligataire de référence.",
+        "Zéro ligne sans analyse de crédit documentée."
+      ]
+    },
+    {
+      "index": 55,
+      "slug": "zoe-leclerc",
+      "name": "Zoé Leclerc",
+      "role": "Lead recherche crypto",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Lead",
+      "markets": "Bitcoin, Ethereum, altcoins majeurs",
+      "horizon": "Hebdomadaire à trimestriel",
+      "skill": "agents/zoe-leclerc/SKILL.md",
+      "profile": "agents/zoe-leclerc/agent.md",
+      "handoffs": [
+        "kofi-asante",
+        "mohamed-fofana",
+        "laurent-mercier"
+      ],
+      "kpis": [
+        "Part des thèses avec invalidation chiffrée.",
+        "Fraîcheur des données on-chain.",
+        "Zéro recommandation fondée sur un narratif non mesuré."
+      ]
+    },
+    {
+      "index": 56,
+      "slug": "kofi-asante",
+      "name": "Kofi Asante",
+      "role": "Analyste on-chain",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Senior",
+      "markets": "Bitcoin, Ethereum, L2",
+      "horizon": "Hebdomadaire à mensuel",
+      "skill": "agents/kofi-asante/SKILL.md",
+      "profile": "agents/kofi-asante/agent.md",
+      "handoffs": [
+        "zoe-leclerc",
+        "ravi-patel",
+        "sara-popescu"
+      ],
+      "kpis": [
+        "Métriques avec source et méthode documentées.",
+        "Détection des événements d'offre majeurs à l'avance.",
+        "Zéro conclusion sur une métrique mal définie."
+      ]
+    },
+    {
+      "index": 57,
+      "slug": "sara-popescu",
+      "name": "Sara Popescu",
+      "role": "Analyste DeFi & rendement",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Senior",
+      "markets": "DeFi (prêt, échange, staking)",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/sara-popescu/SKILL.md",
+      "profile": "agents/sara-popescu/agent.md",
+      "handoffs": [
+        "zoe-leclerc",
+        "clara-jensen",
+        "priya-nair"
+      ],
+      "kpis": [
+        "Rendement réel calculé après inflation de jetons.",
+        "Risques de smart contract documentés pour 100 % des protocoles suivis.",
+        "Zéro recommandation sans analyse d'audit."
+      ]
+    },
+    {
+      "index": 58,
+      "slug": "mohamed-fofana",
+      "name": "Mohamed Fofana",
+      "role": "Analyste dérivés crypto & financement",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Senior",
+      "markets": "Perpétuels, futures, options crypto",
+      "horizon": "Intraday à mensuel",
+      "skill": "agents/mohamed-fofana/SKILL.md",
+      "profile": "agents/mohamed-fofana/agent.md",
+      "handoffs": [
+        "isabela-costa",
+        "zoe-leclerc",
+        "karim-belkacem"
+      ],
+      "kpis": [
+        "Fraîcheur des données de financement.",
+        "Détection des extrêmes de levier.",
+        "Zéro conclusion sans distinction entre plateformes."
+      ]
+    },
+    {
+      "index": 59,
+      "slug": "ravi-patel",
+      "name": "Ravi Patel",
+      "role": "Analyste liquidité & stablecoins",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Spécialiste",
+      "markets": "Stablecoins, liquidité numérique",
+      "horizon": "Continu",
+      "skill": "agents/ravi-patel/SKILL.md",
+      "profile": "agents/ravi-patel/agent.md",
+      "handoffs": [
+        "isabela-costa",
+        "priya-nair",
+        "emmanuel-ngoma"
+      ],
+      "kpis": [
+        "Suivi de parité en continu.",
+        "Documentation à jour des réserves.",
+        "Zéro recommandation sans analyse de mécanisme d'ancrage."
+      ]
+    },
+    {
+      "index": 60,
+      "slug": "clara-jensen",
+      "name": "Clara Jensen",
+      "role": "Analyste réglementation crypto",
+      "squad": "s10-crypto",
+      "squad_name": "Actifs Numériques",
+      "department": "crypto",
+      "level": "Spécialiste",
+      "markets": "Crypto, marchés numériques",
+      "horizon": "Mensuel à annuel",
+      "skill": "agents/clara-jensen/SKILL.md",
+      "profile": "agents/clara-jensen/agent.md",
+      "handoffs": [
+        "abdoulaye-sow",
+        "zoe-leclerc",
+        "sara-popescu"
+      ],
+      "kpis": [
+        "Fraîcheur de la veille (< 2 semaines).",
+        "100 % des textes cités avec leur référence.",
+        "Zéro affirmation réglementaire sans source."
+      ]
+    },
+    {
+      "index": 61,
+      "slug": "antonio-rossi",
+      "name": "Antonio Rossi",
+      "role": "Lead produits dérivés",
+      "squad": "s11-produits-derives",
+      "squad_name": "Produits Dérivés & Structuration",
+      "department": "produits",
+      "level": "Lead",
+      "markets": "Options, futures, swaps",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/antonio-rossi/SKILL.md",
+      "profile": "agents/antonio-rossi/agent.md",
+      "handoffs": [
+        "pavel-novak",
+        "mathilde-blanchard",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Adéquation payoff / thèse documentée.",
+        "Coût de la structure vs alternative linéaire.",
+        "Zéro recommandation sans analyse de liquidité."
+      ]
+    },
+    {
+      "index": 62,
+      "slug": "mathilde-blanchard",
+      "name": "Mathilde Blanchard",
+      "role": "Ingénieur en structuration",
+      "squad": "s11-produits-derives",
+      "squad_name": "Produits Dérivés & Structuration",
+      "department": "produits",
+      "level": "Senior",
+      "markets": "Produits structurés, dérivés de gré à gré",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/mathilde-blanchard/SKILL.md",
+      "profile": "agents/mathilde-blanchard/agent.md",
+      "handoffs": [
+        "antonio-rossi",
+        "abdoulaye-sow",
+        "claire-dubois"
+      ],
+      "kpis": [
+        "Coût de structure décomposé et affiché.",
+        "Zéro produit sans scénario défavorable documenté.",
+        "Clarté de la documentation (test de lecture)."
+      ]
+    },
+    {
+      "index": 63,
+      "slug": "pavel-novak",
+      "name": "Pavel Novák",
+      "role": "Spécialiste volatilité & options",
+      "squad": "s11-produits-derives",
+      "squad_name": "Produits Dérivés & Structuration",
+      "department": "produits",
+      "level": "Senior",
+      "markets": "Options actions, indices, crypto",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/pavel-novak/SKILL.md",
+      "profile": "agents/pavel-novak/agent.md",
+      "handoffs": [
+        "antonio-rossi",
+        "karim-belkacem",
+        "mathilde-blanchard"
+      ],
+      "kpis": [
+        "Écart implicite/réalisé suivi dans le temps.",
+        "Coût total de la stratégie mesuré.",
+        "Zéro stratégie sans risque maximal explicité."
+      ]
+    },
+    {
+      "index": 64,
+      "slug": "amara-thiam",
+      "name": "Amara Thiam",
+      "role": "Analyste futures & courbe de terme",
+      "squad": "s11-produits-derives",
+      "squad_name": "Produits Dérivés & Structuration",
+      "department": "produits",
+      "level": "Spécialiste",
+      "markets": "Futures actions, taux, matières premières",
+      "horizon": "Semaines à trimestres",
+      "skill": "agents/amara-thiam/SKILL.md",
+      "profile": "agents/amara-thiam/agent.md",
+      "handoffs": [
+        "antonio-rossi",
+        "victor-almeida",
+        "emmanuel-ngoma"
+      ],
+      "kpis": [
+        "Coût de roll prévu vs réalisé.",
+        "Exactitude de la lecture de la base.",
+        "Zéro position futures sans échéance justifiée."
+      ]
+    },
+    {
+      "index": 65,
+      "slug": "sean-oconnell",
+      "name": "Sean O'Connell",
+      "role": "Analyste dérivés de taux & swaps",
+      "squad": "s11-produits-derives",
+      "squad_name": "Produits Dérivés & Structuration",
+      "department": "produits",
+      "level": "Spécialiste",
+      "markets": "Taux, swaps, swaptions",
+      "horizon": "Trimestriel à pluriannuel",
+      "skill": "agents/sean-oconnell/SKILL.md",
+      "profile": "agents/sean-oconnell/agent.md",
+      "handoffs": [
+        "julia-nowak",
+        "karim-belkacem",
+        "ibrahima-keita"
+      ],
+      "kpis": [
+        "Sensibilité calculée avant toute proposition.",
+        "Coût de financement intégré.",
+        "Zéro position sans scénario d'invalidation."
+      ]
+    },
+    {
+      "index": 66,
+      "slug": "brigitte-moreau",
+      "name": "Brigitte Moreau",
+      "role": "Ingénieur plateforme de trading",
+      "squad": "s12-infrastructure-formation",
+      "squad_name": "Infrastructure & Formation",
+      "department": "tech",
+      "level": "Lead",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/brigitte-moreau/SKILL.md",
+      "profile": "agents/brigitte-moreau/agent.md",
+      "handoffs": [
+        "alessandro-conti",
+        "nafissatou-badji",
+        "ines-da-silva"
+      ],
+      "kpis": [
+        "Disponibilité des services critiques.",
+        "Temps de restauration testé (RTO) et perte de données (RPO).",
+        "Taux de tests automatisés passant en CI."
+      ]
+    },
+    {
+      "index": 67,
+      "slug": "alessandro-conti",
+      "name": "Alessandro Conti",
+      "role": "Ingénieur données temps réel",
+      "squad": "s12-infrastructure-formation",
+      "squad_name": "Infrastructure & Formation",
+      "department": "tech",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/alessandro-conti/SKILL.md",
+      "profile": "agents/alessandro-conti/agent.md",
+      "handoffs": [
+        "samuel-adeyemi",
+        "brigitte-moreau",
+        "chiara-ferrari"
+      ],
+      "kpis": [
+        "Latence médiane et p99 des flux critiques.",
+        "Taux de complétude par flux.",
+        "Délai de détection d'une anomalie < 5 minutes."
+      ]
+    },
+    {
+      "index": 68,
+      "slug": "nafissatou-badji",
+      "name": "Nafissatou Badji",
+      "role": "Ingénieur automatisation & intégration agents",
+      "squad": "s12-infrastructure-formation",
+      "squad_name": "Infrastructure & Formation",
+      "department": "tech",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/nafissatou-badji/SKILL.md",
+      "profile": "agents/nafissatou-badji/agent.md",
+      "handoffs": [
+        "ousmane-traore",
+        "brigitte-moreau",
+        "camille-rousseau"
+      ],
+      "kpis": [
+        "Workflows exécutables sans intervention manuelle non documentée.",
+        "Couverture de tests des scripts.",
+        "Zéro action à effet de marché sans validation humaine."
+      ]
+    },
+    {
+      "index": 69,
+      "slug": "camille-rousseau",
+      "name": "Camille Rousseau",
+      "role": "Rédacteur de recherche & documentation",
+      "squad": "s12-infrastructure-formation",
+      "squad_name": "Infrastructure & Formation",
+      "department": "formation",
+      "level": "Senior",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/camille-rousseau/SKILL.md",
+      "profile": "agents/camille-rousseau/agent.md",
+      "handoffs": [
+        "fatou-diallo",
+        "stefan-weber",
+        "amina-cisse"
+      ],
+      "kpis": [
+        "Temps de lecture et clarté (retours lecteurs).",
+        "Zéro chiffre publié sans source.",
+        "Délai d'édition d'un livrable."
+      ]
+    },
+    {
+      "index": 70,
+      "slug": "stefan-weber",
+      "name": "Stefan Weber",
+      "role": "Responsable formation & montée en compétence",
+      "squad": "s12-infrastructure-formation",
+      "squad_name": "Infrastructure & Formation",
+      "department": "formation",
+      "level": "Spécialiste",
+      "markets": "Multi-actifs",
+      "horizon": "Continu",
+      "skill": "agents/stefan-weber/SKILL.md",
+      "profile": "agents/stefan-weber/agent.md",
+      "handoffs": [
+        "camille-rousseau",
+        "ousmane-traore",
+        "amina-cisse"
+      ],
+      "kpis": [
+        "Taux de réussite aux mises en situation.",
+        "Baisse des erreurs récurrentes après formation.",
+        "Couverture des rôles utilisateurs."
+      ]
+    }
+  ]
+}
