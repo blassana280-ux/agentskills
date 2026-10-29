@@ -1,0 +1,91 @@
+name: Valider le réseau d'agents
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  coherence:
+    name: Cohérence interne (70 agents, index, escouades)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Vérifier la cohérence du roster
+        run: python3 scripts/validate.py
+
+      - name: Vérifier que les fichiers générés sont à jour
+        run: |
+          python3 scripts/build_agents.py
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Les fichiers générés ne sont pas à jour. Lancez python3 scripts/build_agents.py et commitez."
+            git --no-pager diff --stat
+            exit 1
+          fi
+
+  spec:
+    name: Conformité Agent Skills (skills-ref)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer le validateur de référence
+        run: |
+          git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+          pip install -e /tmp/agentskills/skills-ref
+
+      - name: Valider chaque skill
+        run: |
+          fail=0
+          for d in agents/*/; do
+            skills-ref validate "$d" || fail=1
+          done
+          exit $fail
+
+  liens:
+    name: Liens et structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier la présence des fichiers clés
+        run: |
+          set -e
+          test -f README.md
+          test -f AGENTS.md
+          test -f INDEX.md
+          test -f index.json
+          test -f LICENSE
+          count=$(ls -d agents/*/ | wc -l)
+          echo "Dossiers d'agents : $count"
+          test "$count" -eq 70
+
+      - name: Vérifier les liens relatifs des documents racine
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          root = pathlib.Path('.')
+          broken = []
+          for doc in list(root.glob('*.md')) + list(root.glob('docs/*.md')) + list(root.glob('squads/*.md')):
+              text = doc.read_text(encoding='utf-8')
+              for target in re.findall(r'\]\((?!https?://|#)([^)]+)\)', text):
+                  path = (doc.parent / target.split('#')[0]).resolve()
+                  if target and not path.exists():
+                      broken.append(f"{doc}: {target}")
+          if broken:
+              print("\n".join(broken))
+              sys.exit(1)
+          print("Aucun lien relatif cassé.")
+          PY

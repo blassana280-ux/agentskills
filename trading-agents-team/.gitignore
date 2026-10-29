@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Artefacts locaux
+briefs/locaux/
+*.tmp

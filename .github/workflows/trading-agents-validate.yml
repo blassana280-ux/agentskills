@@ -1,0 +1,62 @@
+name: Trading Agents Team — validation
+
+on:
+  push:
+    paths:
+      - "trading-agents-team/**"
+      - ".github/workflows/trading-agents-validate.yml"
+  pull_request:
+    paths:
+      - "trading-agents-team/**"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: trading-agents-team
+
+jobs:
+  coherence:
+    name: Cohérence interne (70 agents, index, escouades)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Vérifier la cohérence du roster
+        run: python3 scripts/validate.py
+
+      - name: Vérifier que les fichiers générés sont à jour
+        run: |
+          python3 scripts/build_agents.py
+          if [ -n "$(git status --porcelain -- .)" ]; then
+            echo "::error::Les fichiers générés ne sont pas à jour. Lancez python3 scripts/build_agents.py et commitez."
+            git --no-pager diff --stat
+            exit 1
+          fi
+
+  spec:
+    name: Conformité Agent Skills (skills-ref)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer le validateur de référence
+        run: |
+          git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+          pip install -e /tmp/agentskills/skills-ref
+
+      - name: Valider chaque skill (70)
+        run: |
+          fail=0
+          for d in agents/*/; do
+            skills-ref validate "$d" > /dev/null || { echo "ÉCHEC : $d"; skills-ref validate "$d"; fail=1; }
+          done
+          echo "Validation terminée."
+          exit $fail
