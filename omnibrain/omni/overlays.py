@@ -19,6 +19,7 @@ import base64
 import json
 import subprocess
 from dataclasses import dataclass, asdict
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from .audit import INJECTED_SIZE, INJECTED_SHA, _gh_json
@@ -96,6 +97,55 @@ def compose_agents_md(upstream_text: str) -> str:
     marker_at = upstream_text.find(OVERLAY_MARKER)
     base = (upstream_text[:marker_at] if marker_at != -1 else upstream_text).rstrip()
     return base + "\n\n" + build_overlay()
+
+
+def write_manifest(actions: List[OverlayAction], path: str | Path, handled: Optional[Dict[str, str]] = None) -> Path:
+    """Write a reviewable, content-free plan (repo, kind, size, sha256).
+
+    Lets a human verify the repair before it is applied, and check afterwards
+    that the file that landed is byte-identical to the planned one.
+    """
+    import hashlib
+
+    handled = handled or {}
+    pending = [a for a in actions if a.kind != "skip"]
+    lines = [
+        "# Plan de réparation des `AGENTS.md`",
+        "",
+        "Généré en lecture seule par `python3 -m omni overlays --manifest <fichier>`.",
+        "Aucun contenu upstream n'est inclus ici : uniquement des empreintes,",
+        "pour que le résultat puisse être vérifié après application.",
+        "",
+        f"- dépôts scannés : **{len(actions)}**",
+        f"- actions en attente : **{len(pending)}**",
+        "",
+        "| Dépôt | Action | Taille (octets) | sha256 |",
+        "|---|---|---|---|",
+    ]
+    for action in pending:
+        digest = hashlib.sha256(action.new_content.encode("utf-8")).hexdigest()
+        kind = action.kind
+        if action.repo in handled:
+            kind += f" *(traité : {handled[action.repo]})*"
+        lines.append(
+            f"| `{action.repo}` | {kind} | {len(action.new_content.encode('utf-8'))} | `{digest[:16]}…` |"
+        )
+    lines += [
+        "",
+        "## Application",
+        "",
+        "```bash",
+        "python3 -m omni overlays --account blassana280-ux --apply",
+        "```",
+        "",
+        "Chaque dépôt reçoit une branche `omnibrain/agents-md-<ts>` et une Pull Request ;",
+        "`main` n'est jamais écrit directement. Un refus d'écriture est rapporté comme",
+        "`blocked`, jamais comme un succès.",
+    ]
+    target = Path(path)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return target
 
 
 def _decode_content(payload: Dict[str, Any]) -> str:

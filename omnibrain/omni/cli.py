@@ -14,7 +14,7 @@ from typing import List, Optional
 from .audit import audit_account
 from .executor import detect_clis, provider_from_env
 from .gitops import GitOpsError, probe_branch_protection
-from .overlays import apply as apply_overlay, plan as plan_overlays
+from .overlays import apply as apply_overlay, plan as plan_overlays, write_manifest
 from .orchestrator import Orchestrator
 from .registry import Registry, RegistryError
 
@@ -133,6 +133,9 @@ def cmd_overlays(args: argparse.Namespace) -> int:
     print(f"actions required: {len(pending)}")
     for action in pending:
         print(f"  - {action.repo:<45} {action.kind:<16} {action.reason}")
+    if args.manifest:
+        path = write_manifest(actions, args.manifest, handled={"blassana280-ux/agentskills": "PR #4"})
+        print(f"manifest written to {path}")
     if not args.apply:
         print("\ndry run — nothing was written. Re-run with --apply (needs write access).")
         return 0
@@ -204,6 +207,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     overlays.add_argument("--limit", type=int, default=200)
     overlays.add_argument("--only", nargs="*", help="restrict to these repository names")
     overlays.add_argument("--apply", action="store_true")
+    overlays.add_argument("--manifest", help="write a content-free repair plan (markdown)")
     overlays.set_defaults(func=cmd_overlays)
 
     selftest = sub.add_parser("selftest", help="run the real test suite")

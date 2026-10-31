@@ -40,7 +40,8 @@ an intention.
 | GitHub: PR command construction/execution via `gh` | **works** | `TestPullRequestCommands` + the PR that introduced this file |
 | Branch-protection **probe** | **works but limited** | returns `insufficient_permission` for this token (real `gh api` output, `OMNI_LIVE=1`) |
 | Branch-protection **apply** | **blocked** | needs `Administration: write`; the CLI prints the exact `gh api` call to run |
-| Account-wide `AGENTS.md` repair (`omni overlays`) | **plan works, apply blocked** | live plan: 10 `restore+overlay` + 28 `refresh` on 41 repos; `--apply` returns `blocked: cannot create blob (write access missing)` |
+| Account-wide `AGENTS.md` repair (`omni overlays`) | **plan works, apply blocked** | live plan: 10 `restore+overlay` + 28 `refresh` on 41 repos (`docs/OVERLAYS-PLAN.md`, with sha256 of each planned file); `--apply` → `blocked: cannot create blob (write access missing)` |
+| Write pipeline itself | **works** | commit `76b281f8cb` created through `omni.overlays.apply` on the one writable repo, throwaway branch deleted afterwards |
 | AI agent **execution** | **not configured** | no agent CLI found on PATH; `OMNI_PROVIDER_CMD` unset → briefs are handed to a human (`pending_human`, `executed=False`) |
 
 Two limits are environmental, not architectural: this session's GitHub token can

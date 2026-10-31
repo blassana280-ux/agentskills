@@ -69,3 +69,27 @@ class TestOverlayReporting(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestManifest(unittest.TestCase):
+    def test_manifest_is_content_free_and_hashes_the_plan(self) -> None:
+        import hashlib
+        import tempfile
+        from pathlib import Path
+
+        from omni.overlays import OverlayAction, write_manifest
+
+        payload = "contenu destiné à AGENTS.md"
+        action = OverlayAction(
+            repo="o/r", parent="up/r", branch="main", kind="refresh",
+            reason="r", new_content=payload,
+        )
+        skip = OverlayAction(repo="o/skip", parent="up/r", branch="main", kind="skip", reason="r")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = write_manifest([action, skip], Path(tmp) / "plan.md", handled={"o/r": "PR #4"})
+            text = path.read_text(encoding="utf-8")
+        self.assertIn("`o/r`", text)
+        self.assertIn("PR #4", text)
+        self.assertNotIn("`o/skip`", text)                  # skipped repos stay out
+        self.assertNotIn(payload, text)                     # no content leaked
+        self.assertIn(hashlib.sha256(payload.encode()).hexdigest()[:16], text)

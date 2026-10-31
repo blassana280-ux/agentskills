@@ -132,6 +132,29 @@ Correspondance avec les 10 scénarios exigés :
 Aucun test n'est déclaré réussi sans exécution : `docs/TEST-RESULTS.md` contient la
 sortie brute.
 
+## 7 bis. Reconnexion GitHub — re-vérification (2026-10-31 11:01 UTC)
+
+Le compte a été reconnecté. Nouveau contrôle, même protocole :
+
+- **token fraîchement émis** (expiration `2026-10-31 19:01:34 UTC`, soit +8 h) ;
+- **nouvelle sonde sur les 41 dépôts** : `1` en écriture (`agentskills`), `40` en
+  lecture seule — identique à l'état d'avant reconnexion.
+
+Cause identifiée, au-delà du symptôme :
+
+| Constat | Preuve |
+|---|---|
+| L'application `arena-ai-coding-agent` est bien installée avec `repository_selection: "all"` et la permission `contents: write` | `GET /user/installations` → installation `167372294`, `app_id 4187077` |
+| Le **token effectif** est malgré tout restreint à `agentskills` | même appel `POST /git/refs`, même en-tête `X-Accepted-Github-Permissions: contents=write` → `403` sur `mem0` et `omni-agents-framework`, `201` sur `agentskills` |
+| Ce n'est pas un problème de fourche ni d'archive | `isArchived: false` sur les 41 ; `omni-agents-framework` est natif et refuse aussi |
+| Notre pipeline d'écriture fonctionne | commit `76b281f8cb` créé sur une branche jetable d'`agentskills`, puis branche supprimée (réf absente après coup) |
+| Le patch de promotion s'applique proprement | clone neuf de `omni-agents-framework` + `git am` → 69 tests verts |
+
+Conclusion : l'autorisation doit être élargie **au niveau de la connexion GitHub
+d'Arena** (sélection de dépôts), pas du code. Le reste est prêt :
+`scripts/finish-repair.sh` exécute préflight, publication et réparation en une
+commande ; `docs/OVERLAYS-PLAN.md` liste les 38 actions avec leurs empreintes.
+
 ## 8. Branches et Pull Requests
 
 | Dépôt | Branche | PR |
@@ -141,8 +164,13 @@ sortie brute.
 
 ## 9. Éléments encore bloqués
 
-1. **Écriture GitHub** sur 40 des 41 dépôts → aucune PR possible ailleurs. Action
-   requise : reconnecter GitHub avec un accès en écriture.
+1. **Écriture GitHub** sur 40 des 41 dépôts → aucune PR possible ailleurs.
+   Reconnexion testée le 2026-10-31 : token neuf, périmètre inchangé.
+   Action requise : dans GitHub → *Settings → Applications → Arena → Configure →
+   Repository access*, choisir **All repositories** (ou ajouter
+   `omni-agents-framework` et les 9 dépôts de `docs/OVERLAYS-PLAN.md`), puis
+   reconnecter. Vérification ensuite : `bash omnibrain/scripts/finish-repair.sh`
+   (préflight `DRY_RUN=1` d'abord).
 2. **Les 9 autres `AGENTS.md` écrasés** → réparation prête, application bloquée.
    `python3 -m omni overlays --account blassana280-ux --apply`.
 3. **Protection de branche** → scope `Administration` absent.

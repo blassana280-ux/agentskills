@@ -70,9 +70,23 @@ dépôt (`POST /git/refs`), 41 dépôts testés.
 | **lecture seule** (`403 Resource not accessible by integration`) | les 40 autres, y compris `omni-agents-framework` |
 | lecture de la protection de branche | refusée sur tous (`Administration: read` absent) |
 
+Sonde rejouée après reconnexion (2026-10-31 11:01 UTC, token neuf expirant à
+19:01 UTC) : **1 écriture / 40 lecture seule**, inchangé.
+
+L'installation `arena-ai-coding-agent` déclare pourtant
+`repository_selection: "all"` et `contents: write`. Le token effectif, lui, est
+restreint à `agentskills` : `POST /git/refs` renvoie `403` sur `mem0` et
+`omni-agents-framework` et `201` sur `agentskills`, **avec le même en-tête
+`X-Accepted-Github-Permissions: contents=write`**. La restriction vient donc de
+la sélection de dépôts de la connexion, pas d'un défaut de code.
+
+Le pipeline d'écriture a été validé de bout en bout là où l'écriture est permise :
+commit `76b281f8cb` créé sur une branche jetable, puis branche supprimée.
+
 Conséquence : les correctifs prévus pour les 9 autres dépôts dont le
 `AGENTS.md` upstream a été écrasé sont **prêts et planifiés** par
-`python3 -m omni overlays`, mais ne peuvent pas être poussés avec ce jeton.
+`python3 -m omni overlays` (voir `docs/OVERLAYS-PLAN.md`), mais ne peuvent pas
+être poussés avec ce jeton.
 Commande d'application dès que l'accès en écriture est accordé :
 
 ```bash

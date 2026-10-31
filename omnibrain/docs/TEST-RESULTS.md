@@ -1,7 +1,7 @@
 # Résultats de tests — exécution réelle
 
 Commande : `python3 -m unittest discover -s tests -t .`
-Date : 2026-10-30 18:29 UTC
+Date : 2026-10-31 11:05 UTC
 Environnement : Python 3.11.2, stdlib seule (pas de pytest), aucun accès réseau requis.
 
 ```
@@ -42,6 +42,7 @@ test_review_wave_runs_after_work_wave (tests.test_orchestration.TestParallelExec
 test_wave_is_parallel_not_sequential (tests.test_orchestration.TestParallelExecution.test_wave_is_parallel_not_sequential) ... ok
 test_deliverable_is_one_coherent_document (tests.test_orchestration.TestTraceability.test_deliverable_is_one_coherent_document) ... ok
 test_trace_records_the_whole_run (tests.test_orchestration.TestTraceability.test_trace_records_the_whole_run) ... ok
+test_manifest_is_content_free_and_hashes_the_plan (tests.test_overlays.TestManifest.test_manifest_is_content_free_and_hashes_the_plan) ... ok
 test_composition_is_idempotent (tests.test_overlays.TestOverlayComposition.test_composition_is_idempotent) ... ok
 test_overlay_does_not_present_the_broken_reference_as_valid (tests.test_overlays.TestOverlayComposition.test_overlay_does_not_present_the_broken_reference_as_valid) ... ok
 test_overlay_is_a_separate_marked_section (tests.test_overlays.TestOverlayComposition.test_overlay_is_a_separate_marked_section) ... ok
@@ -77,7 +78,7 @@ test_validation_catches_broken_agent_reference (tests.test_routing.TestRegistryI
 The exact class of bug behind the optimiser-mes-agents-IA reference. ... ok
 
 ----------------------------------------------------------------------
-Ran 69 tests in 4.334s
+Ran 70 tests in 4.340s
 
 OK (skipped=1)
 ```
@@ -88,7 +89,7 @@ OK (skipped=1)
 test_live_probe_returns_a_known_state (tests.test_gitops.TestLiveGitHubProbe.test_live_probe_returns_a_known_state) ... ok
 
 ----------------------------------------------------------------------
-Ran 1 test in 0.290s
+Ran 1 test in 0.311s
 
 OK
 

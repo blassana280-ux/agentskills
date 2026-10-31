@@ -19,6 +19,21 @@ du compte (`POST /git/refs` sur une référence temporaire, puis suppression) :
 `git push` vers `omni-agents-framework` échoue de la même façon
 (`remote: Permission ... denied`). Aucune PR n'était donc ouvrable là-bas.
 
+Reconnexion GitHub testée le **2026-10-31 à 11:01 UTC** : token neuf
+(expiration 19:01 UTC), périmètre **identique** — 1 dépôt en écriture sur 41.
+L'application `arena-ai-coding-agent` annonce pourtant `repository_selection:
+"all"` et `contents: write` ; c'est le token effectif qui est restreint à
+`agentskills` (même requête : `403` sur `mem0`, `201` sur `agentskills`, avec le
+même en-tête de permission attendue). Il faut donc élargir la sélection de
+dépôts dans GitHub → *Settings → Applications → Arena → Configure*.
+
+Dès que c'est fait :
+
+```bash
+bash omnibrain/scripts/finish-repair.sh          # préflight + publication + réparation
+DRY_RUN=1 bash omnibrain/scripts/finish-repair.sh  # pour voir sans rien écrire
+```
+
 Cette copie existe pour que le travail soit **réellement livré, relu et testé**
 aujourd'hui, pas seulement décrit. Elle n'est pas destinée à l'upstream
 `agentskills/agentskills` : c'est une couche locale au fork.
