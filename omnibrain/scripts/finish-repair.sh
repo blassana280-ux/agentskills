@@ -58,9 +58,16 @@ cd "$WORK/omni-agents-framework"
 git config user.name  "$(git config --global user.name  || echo "$ACCOUNT")"
 git config user.email "$(git config --global user.email || echo "$ACCOUNT@users.noreply.github.com")"
 git checkout -q -B omni/orchestrator-v1
-git am "$OMNIBRAIN/patches/0001-omnibrain-orchestrator.patch"
+# Copie de l'état EXACT livré ici (le patch de patches/ reste comme historique lisible).
+# Aucun fichier du dépôt cible n'est supprimé : on écrase seulement les mêmes chemins.
+for item in omni registry tests docs README.md OMNIBRAIN.md AGENTS.md LICENSE Makefile .gitignore; do
+  cp -a "$OMNIBRAIN/$item" "$WORK/omni-agents-framework/$item"
+done
+git add -A
+git diff --cached --quiet && fail "aucune différence : rien à publier" || true
+git commit -q -m "feat(omnibrain): orchestrator, registries, routing matrix, permission model and 70 tests"
 python3 -m unittest discover -s tests -t . >/dev/null || fail "les tests échouent dans le clone : rien n'a été poussé"
-echo "✓ 69 tests verts dans le clone"
+echo "✓ 70 tests verts dans le clone"
 if [ "$DRY_RUN" = "1" ]; then
   echo "(dry run) git push + PR ignorés"; else
   git push -q -u origin omni/orchestrator-v1
