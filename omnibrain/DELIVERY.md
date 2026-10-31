@@ -27,12 +27,37 @@ L'application `arena-ai-coding-agent` annonce pourtant `repository_selection:
 même en-tête de permission attendue). Il faut donc élargir la sélection de
 dépôts dans GitHub → *Settings → Applications → Arena → Configure*.
 
-Dès que c'est fait :
+**Re-vérification du 2026-10-31 17:18 UTC** : jeton neuf (expire le 2026-11-01
+01:18 UTC), installation **inchangée depuis le 2026-10-16** et déjà en
+`repository_selection: "all"` + `contents: write`. Le jeton de session reste
+néanmoins limité à `agentskills` : la restriction est décidée côté plateforme au
+moment de l'émission du jeton, pas dans les réglages GitHub. Il n'y a donc plus
+rien à corriger sur la page d'installation.
+
+Deux chemins restent, tous deux avec **votre** jeton :
+
+### A. En local (2 minutes)
 
 ```bash
-bash omnibrain/scripts/finish-repair.sh          # préflight + publication + réparation
-DRY_RUN=1 bash omnibrain/scripts/finish-repair.sh  # pour voir sans rien écrire
+gh auth status                                   # doit être authentifié
+DRY_RUN=1 bash omnibrain/scripts/finish-repair.sh   # contrôle sans écrire
+bash omnibrain/scripts/finish-repair.sh             # exécution complète
 ```
+
+### B. Sans terminal, via GitHub Actions
+
+1. Créer un jeton fin avec, sur tous les dépôts : `Contents: Read and write` +
+   `Pull requests: Read and write`.
+2. L'enregistrer comme secret `OMNI_GH_TOKEN` :
+   <https://github.com/blassana280-ux/agentskills/settings/secrets/actions/new>
+3. Lancer le workflow **« OmniBrain repair (manual) »** en `dry-run`, puis en
+   `apply` :
+   <https://github.com/blassana280-ux/agentskills/actions/workflows/omnibrain-repair.yml>
+
+Le workflow exige que `.github/workflows/omnibrain-repair.yml` soit sur la
+branche par défaut pour apparaître dans l'interface : fusionner cette PR (ou
+lancer `gh workflow run omnibrain-repair.yml --ref arena/265447fb-agentskills`)
+au préalable.
 
 Cette copie existe pour que le travail soit **réellement livré, relu et testé**
 aujourd'hui, pas seulement décrit. Elle n'est pas destinée à l'upstream

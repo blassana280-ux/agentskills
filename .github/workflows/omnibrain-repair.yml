@@ -1,0 +1,58 @@
+name: OmniBrain repair (manual)
+
+# Réparation à déclencher à la main, avec VOTRE jeton, parce que le jeton de
+# session de l'agent ne peut écrire que dans ce dépôt (mesuré : 1 sur 41).
+#
+# Prérequis :
+#   1. créer un jeton fin (fine-grained) avec, sur TOUS les dépôts :
+#        Contents: Read and write · Pull requests: Read and write
+#   2. l'enregistrer comme secret de ce dépôt : OMNI_GH_TOKEN
+#      https://github.com/blassana280-ux/agentskills/settings/secrets/actions/new
+#   3. lancer ce workflow (mode dry-run d'abord)
+#
+# Rien n'est jamais fusionné : chaque dépôt reçoit une branche + une PR.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run : aucune écriture | apply : crée branches et PR"
+        type: choice
+        options:
+          - dry-run
+          - apply
+        default: dry-run
+
+permissions:
+  contents: read
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Tests du framework (aucun réseau requis)
+        run: cd omnibrain && python3 -m unittest discover -s tests -t .
+
+      - name: Réparation
+        env:
+          GH_TOKEN: ${{ secrets.OMNI_GH_TOKEN }}
+          ACCOUNT: blassana280-ux
+          DRY_RUN: ${{ inputs.mode == 'dry-run' && '1' || '0' }}
+        run: |
+          if [ -z "${GH_TOKEN}" ]; then
+            echo "::error::Le secret OMNI_GH_TOKEN n'est pas défini sur ce dépôt."
+            exit 1
+          fi
+          git config --global user.name "omnibrain-repair"
+          git config --global user.email "omnibrain-repair@users.noreply.github.com"
+          gh auth setup-git
+          bash omnibrain/scripts/finish-repair.sh

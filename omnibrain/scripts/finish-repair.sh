@@ -45,6 +45,11 @@ probe_write "$REPO" || fail "pas d'accès en écriture sur $REPO.
   (ou ajoutez explicitement $REPO et les dépôts listés dans docs/OVERLAYS-PLAN.md), puis reconnectez GitHub dans Arena."
 echo "✓ écriture confirmée sur $REPO"
 
+# gh peut fournir les identifiants git (utile en CI où GH_TOKEN remplace `gh auth login`)
+if ! git config --get-all credential.https://github.com.helper >/dev/null 2>&1; then
+  gh auth setup-git >/dev/null 2>&1 || true
+fi
+
 say "1/4 — publication de l'orchestrateur dans $REPO"
 rm -rf "$WORK/omni-agents-framework"
 mkdir -p "$WORK"
