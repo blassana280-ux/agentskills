@@ -13,6 +13,14 @@ name: OmniBrain repair (manual)
 # Rien n'est jamais fusionné : chaque dépôt reçoit une branche + une PR.
 
 on:
+  # Déclenchement automatique UNE fois, au moment où ce fichier arrive sur main
+  # (c'est-à-dire à la fusion de la PR qui le contient) : si le secret
+  # OMNI_GH_TOKEN est déjà enregistré, la réparation part sans aucune action
+  # manuelle. Avec le filtre de chemin, un push ordinaire ne la relance pas.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/omnibrain-repair.yml"
   workflow_dispatch:
     inputs:
       mode:
@@ -46,7 +54,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.OMNI_GH_TOKEN }}
           ACCOUNT: blassana280-ux
-          DRY_RUN: ${{ inputs.mode == 'dry-run' && '1' || '0' }}
+          # push -> applique ; dispatch -> selon l'entrée choisie
+          DRY_RUN: ${{ github.event_name == 'push' && '0' || (inputs.mode == 'dry-run' && '1' || '0') }}
         run: |
           if [ -z "${GH_TOKEN}" ]; then
             echo "::error::Le secret OMNI_GH_TOKEN n'est pas défini sur ce dépôt."
